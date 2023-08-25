@@ -1,0 +1,21 @@
+{
+  "name": "vscode-theme-seashells",
+  "displayName": "vscode-theme-seashells",
+  "description": "A VS Code theme based on the SeaShells terminal color scheme.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "SeaShells",
+        "uiTheme": "vs-dark",
+        "path": "./themes/SeaShells-color-theme.json"
+      }
+    ]
+  }
+}
