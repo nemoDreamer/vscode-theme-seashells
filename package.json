@@ -10,7 +10,7 @@
     "build": "./src/build.js",
     "build:verbose": "npm run build -- -l verbose",
     "bump": "npm version $(conventional-recommended-bump -p angular)",
-    "dev": "npm run build -- --watch",
+    "dev": "nodemon -w src ./src/build.js -- -l verbose",
     "prepare": "husky install",
     "version": "standard-changelog && git add CHANGELOG.md"
   },
@@ -29,8 +29,6 @@
     }
   },
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "fresh-require": "^1.0.3",
     "npmlog": "^7.0.1",
     "yargs": "^17.7.2"
   },
@@ -43,6 +41,7 @@
     "eslint-plugin-import": "^2.28.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
     "prettier": "3.0.2",
     "sort-package-json": "^2.5.1",
     "standard-changelog": "^3.0.0"
