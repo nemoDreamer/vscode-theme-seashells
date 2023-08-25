@@ -1,16 +1,9 @@
-# vscode-theme-seashells README
+# vscode-theme-seashells
 
-## Working with Markdown
+A VS Code theme based on the [SeaShells terminal color scheme](https://iterm2colorschemes.com).
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+**⚠️ NOTE:** this theme is still a work-in-progress!
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+![VS Code screenshot](assets/screenshot.png)
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+<!-- ![iTerm2 color-schemes SeaShells palette](./assets/iterm2colorschemes-seashells.png) -->
