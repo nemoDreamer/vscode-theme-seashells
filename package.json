@@ -7,14 +7,17 @@
     "Themes"
   ],
   "scripts": {
+    "build": "./src/build.js",
+    "build:verbose": "npm run build -- -l verbose",
+    "dev": "npm run build -- --watch",
     "prepare": "husky install"
   },
   "contributes": {
     "themes": [
       {
-        "label": "SeaShells",
+        "label": "SeaShells (Dark)",
         "uiTheme": "vs-dark",
-        "path": "./themes/SeaShells-color-theme.json"
+        "path": "./themes/seashells-dark-color-theme.json"
       }
     ]
   },
@@ -22,6 +25,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fresh-require": "^1.0.3",
+    "npmlog": "^7.0.1",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
