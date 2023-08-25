@@ -9,6 +9,7 @@
   "repository": {
     "url": "https://github.com/nemoDreamer/vscode-theme-seashells.git"
   },
+  "license": "MIT",
   "scripts": {
     "build": "./src/build.js",
     "build:verbose": "npm run build -- -l verbose",
