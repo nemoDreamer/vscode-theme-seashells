@@ -1,3 +1,5 @@
+## [0.1.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.1.1...v0.1.2) (2023-08-25)
+
 ## [0.1.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.1.0...v0.1.1) (2023-08-25)
 
 # 0.1.0 (2023-08-25)
