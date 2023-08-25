@@ -1,6 +1,6 @@
 {
   "name": "vscode-theme-seashells",
-  "displayName": "vscode-theme-seashells",
+  "displayName": "SeaShells Theme",
   "version": "0.0.1",
   "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "categories": [
@@ -9,8 +9,10 @@
   "scripts": {
     "build": "./src/build.js",
     "build:verbose": "npm run build -- -l verbose",
+    "bump": "npm version $(conventional-recommended-bump -p angular)",
     "dev": "npm run build -- --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "version": "standard-changelog && git add CHANGELOG.md"
   },
   "contributes": {
     "themes": [
@@ -33,6 +35,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "conventional-recommended-bump": "^7.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -41,7 +44,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "3.0.2",
-    "sort-package-json": "^2.5.1"
+    "sort-package-json": "^2.5.1",
+    "standard-changelog": "^3.0.0"
   },
   "engines": {
     "vscode": "^1.81.0"
