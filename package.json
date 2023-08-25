@@ -1,14 +1,14 @@
 {
   "name": "vscode-theme-seashells",
   "displayName": "vscode-theme-seashells",
-  "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.81.0"
-  },
+  "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "categories": [
     "Themes"
   ],
+  "scripts": {
+    "prepare": "husky install"
+  },
   "contributes": {
     "themes": [
       {
@@ -17,5 +17,24 @@
         "path": "./themes/SeaShells-color-theme.json"
       }
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "3.0.2",
+    "sort-package-json": "^2.5.1"
+  },
+  "engines": {
+    "vscode": "^1.81.0"
   }
 }
