@@ -4,9 +4,9 @@ A VS Code theme based on the [SeaShells terminal color scheme](https://iterm2col
 
 **⚠️ NOTE:** this theme is still a work-in-progress!
 
-![VS Code screenshot](assets/screenshot.png)
+![VS Code screenshot](./src/assets/screenshot.png)
 
-<!-- ![iTerm2 color-schemes SeaShells palette](./assets/iterm2colorschemes-seashells.png) -->
+![iTerm2 color-schemes SeaShells palette](./src/assets/iterm2colorschemes-seashells.png)
 
 ## TODO:
 
