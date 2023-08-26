@@ -14,7 +14,7 @@
   "scripts": {
     "build": "./src/build.js",
     "build:verbose": "npm run build -- -l verbose",
-    "bump": "npm version $(conventional-recommended-bump -p angular)",
+    "publish": "vsce publish $(conventional-recommended-bump -p angular)",
     "dev": "nodemon -w src ./src/build.js -- -l verbose",
     "prepare": "husky install",
     "version": "standard-changelog && git add CHANGELOG.md"
