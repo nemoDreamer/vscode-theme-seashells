@@ -39,7 +39,7 @@ const relative = (to) => `./${path.relative(ROOT, to)}`;
     log.info("Processing theme id:", scheme.id);
 
     const theme = makeColorTheme(scheme);
-    const json = JSON.stringify(theme, null, 2);
+    const json = `${JSON.stringify(theme, null, 2)}\n`;
 
     const filename = `seashells-${scheme.id}-color-theme.json`;
     const filepath = path.resolve(ROOT, "themes", filename);
