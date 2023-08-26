@@ -1,7 +1,7 @@
 {
   "name": "vscode-theme-seashells",
   "displayName": "SeaShells Theme",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "categories": [
     "Themes"
@@ -14,9 +14,9 @@
   "scripts": {
     "build": "./src/build.js",
     "build:verbose": "npm run build -- -l verbose",
-    "publish": "vsce publish $(conventional-recommended-bump -p angular)",
     "dev": "nodemon -w src ./src/build.js -- -l verbose",
     "prepare": "husky install",
+    "publish": "vsce publish $(conventional-recommended-bump -p angular)",
     "version": "standard-changelog && git add CHANGELOG.md"
   },
   "contributes": {
