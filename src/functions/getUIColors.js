@@ -5,34 +5,36 @@ module.exports = ({
   foreground,
   background,
   // bold,
-  cursor,
+  // links,
   cursorText,
-  // selection,
-  // selectionText,
+  selection: selectionBackground,
+  selectedText: selectionForeground,
 }) => {
-  // TODO:
-  // - [x] make DIFF colors
-  // - [x] make status colors
-  // - [ ] make box colors
-
   const added = ansi.green; // syn. "inserted"
   const removed = ansi.red; // syn. "deleted"
-  // const modified = ansi.blue;
+  const modified = ansi.cyan;
+  const ignored = alpha(foreground, "66");
+  const untracked = ansi.yellow;
 
   const info = ansi.blue;
   const warning = ansi.yellow;
   const error = ansi.red;
   // const success = ansi.green;
 
+  const boxBackground = alpha(ansi.black, "80");
+  const boxHoverBackground = alpha(ansi.black, "99");
+  const boxForeground = ansi.brightBlack;
+  const boxBorder = alpha(ansi.brightWhite, "33");
+
   return {
-    "activityBar.activeBackground": ansi.black,
+    "activityBar.activeBackground": ansi.blue,
     // "activityBar.activeBorder": ansi.brightWhite,
     // "activityBar.activeFocusBorder": null,
-    "activityBar.background": background,
+    "activityBar.background": background, // alpha(ansi.blue, "11"),
     // "activityBar.border": ansi.brightBlack,
     // "activityBar.dropBorder": foreground,
-    "activityBar.foreground": ansi.brightWhite,
-    // "activityBar.inactiveForeground": alpha(foreground, "66"),
+    "activityBar.foreground": ansi.brightCyan,
+    "activityBar.inactiveForeground": alpha(ansi.brightCyan, "33"),
 
     "activityBarBadge.background": ansi.green,
     "activityBarBadge.foreground": ansi.brightWhite,
@@ -51,13 +53,13 @@ module.exports = ({
 
     // "breadcrumbPicker.background": background,
 
-    "button.background": ansi.green,
+    "button.background": alpha(ansi.white, "80"),
     "button.border": null,
     "button.foreground": ansi.brightWhite,
-    "button.hoverBackground": ansi.brightGreen,
+    // "button.hoverBackground": ansi.white,
     "button.secondaryBackground": ansi.blue,
     "button.secondaryForeground": ansi.white,
-    "button.secondaryHoverBackground": ansi.brightBlue,
+    // "button.secondaryHoverBackground": ansi.brightBlue,
     "button.separator": alpha(foreground, "66"),
 
     "charts.blue": ansi.blue,
@@ -138,16 +140,15 @@ module.exports = ({
 
     // descriptionForeground: foreground,
 
-    // TODO:
-    // "diffEditor.border": null,
-    // "diffEditor.diagonalFill": alpha("#cccccc", "33"),
-    // "diffEditor.insertedLineBackground": alpha("#9bb955", "33"),
-    // "diffEditor.insertedTextBackground": alpha(ansi.cyan, "80"),
-    // "diffEditor.insertedTextBorder": null,
+    "diffEditor.border": null,
+    "diffEditor.diagonalFill": alpha(ansi.black, "80"),
+    "diffEditor.insertedLineBackground": alpha(added, "33"),
+    "diffEditor.insertedTextBackground": alpha(added, "80"),
+    "diffEditor.insertedTextBorder": null,
     // "diffEditor.move.border": alpha("#8b8b8b", "9c"),
-    // "diffEditor.removedLineBackground": alpha(removed, "33"),
-    // "diffEditor.removedTextBackground": alpha(removed, "80"),
-    // "diffEditor.removedTextBorder": null,
+    "diffEditor.removedLineBackground": alpha(removed, "33"),
+    "diffEditor.removedTextBackground": alpha(removed, "80"),
+    "diffEditor.removedTextBorder": null,
     // "diffEditor.unchangedCodeBackground": alpha("#747474", "29"),
     // "diffEditor.unchangedRegionBackground": "#3e3e3e",
     // "diffEditor.unchangedRegionForeground": "#a3a2a2",
@@ -180,13 +181,13 @@ module.exports = ({
     // "editor.inactiveSelectionBackground": alpha("#677696", "30"),
     // "editor.inlineValuesBackground": alpha("#ffc800", "33"),
     // "editor.inlineValuesForeground": alpha(ansi.brightWhite, "80"),
-    // "editor.lineHighlightBackground": "#383e4a",
-    // "editor.lineHighlightBorder": "#282828",
+    "editor.lineHighlightBackground": alpha(ansi.black, "33"),
+    "editor.lineHighlightBorder": null,
     // "editor.linkedEditingBackground": alpha("#ff0000", "4d"),
     // "editor.rangeHighlightBackground": alpha(ansi.blue, "30"),
     // "editor.rangeHighlightBorder": null,
-    // "editor.selectionBackground": alpha("#677696", "60"),
-    // "editor.selectionForeground": null,
+    "editor.selectionBackground": selectionBackground,
+    "editor.selectionForeground": selectionForeground,
     // "editor.selectionHighlightBackground": alpha(ansi.brightWhite, "10"),
     // "editor.selectionHighlightBorder": null,
     // "editor.snippetFinalTabstopHighlightBackground": null,
@@ -236,8 +237,8 @@ module.exports = ({
     // "editorCommentsWidget.resolvedBorder": alpha("#cccccc", "80"),
     // "editorCommentsWidget.unresolvedBorder": alpha(foreground, "00"),
 
-    "editorCursor.background": cursorText,
-    "editorCursor.foreground": cursor,
+    // "editorCursor.background": null,
+    "editorCursor.foreground": cursorText,
 
     // "editorError.background": null,
     // "editorError.border": null,
@@ -247,11 +248,11 @@ module.exports = ({
     // "editorGhostText.border": null,
     // "editorGhostText.foreground": alpha(ansi.brightWhite, "56"),
 
-    // "editorGroup.border": "#181a1f",
-    // "editorGroup.dropBackground": alpha("#53595d", "80"),
-    // "editorGroup.dropIntoPromptBackground": background,
-    // "editorGroup.dropIntoPromptBorder": null,
-    // "editorGroup.dropIntoPromptForeground": foreground,
+    "editorGroup.border": alpha(ansi.black, "33"),
+    "editorGroup.dropBackground": alpha(ansi.black, "33"),
+    "editorGroup.dropIntoPromptBackground": boxBackground,
+    "editorGroup.dropIntoPromptBorder": null,
+    "editorGroup.dropIntoPromptForeground": boxForeground,
     // "editorGroup.emptyBackground": null,
     // "editorGroup.focusedEmptyBorder": null,
 
@@ -319,7 +320,7 @@ module.exports = ({
     // "editorMarkerNavigationWarning.background": warning,
     // "editorMarkerNavigationWarning.headerBackground": alpha(warning, "1a"),
 
-    // "editorOverviewRuler.addedForeground": alpha(added, "99"),
+    "editorOverviewRuler.addedForeground": added,
     // "editorOverviewRuler.background": null,
     // "editorOverviewRuler.border": ansi.brightBlack,
     // "editorOverviewRuler.bracketMatchForeground": "#a0a0a0",
@@ -327,15 +328,15 @@ module.exports = ({
     // "editorOverviewRuler.commentUnresolvedForeground": "#2c313a",
     // "editorOverviewRuler.commonContentForeground": alpha("#606060", "66"),
     // "editorOverviewRuler.currentContentForeground": alpha("#40c8ae", "80"),
-    // "editorOverviewRuler.deletedForeground": alpha(removed, "99"),
-    // "editorOverviewRuler.errorForeground": alpha(error, "b3"),
+    "editorOverviewRuler.deletedForeground": removed,
+    "editorOverviewRuler.errorForeground": error,
     // "editorOverviewRuler.findMatchForeground": alpha("#d18616", "7e"),
     // "editorOverviewRuler.incomingContentForeground": alpha(added, "80"),
-    // "editorOverviewRuler.infoForeground": info,
+    "editorOverviewRuler.infoForeground": info,
     // "editorOverviewRuler.modifiedForeground": alpha(modified, "99"),
     // "editorOverviewRuler.rangeHighlightForeground": alpha("#007acc", "99"),
     // "editorOverviewRuler.selectionHighlightForeground": alpha("#a0a0a0", "cc"),
-    // "editorOverviewRuler.warningForeground": warning,
+    "editorOverviewRuler.warningForeground": warning,
     // "editorOverviewRuler.wordHighlightForeground": alpha("#a0a0a0", "cc"),
     // "editorOverviewRuler.wordHighlightStrongForeground": alpha("#c0a0c0", "cc"),
     // "editorOverviewRuler.wordHighlightTextForeground": alpha("#a0a0a0", "cc"),
@@ -397,32 +398,32 @@ module.exports = ({
 
     foreground,
 
-    // "gitDecoration.addedResourceForeground": added,
-    // "gitDecoration.conflictingResourceForeground": ansi.red,
-    // "gitDecoration.deletedResourceForeground": ansi.red,
-    // "gitDecoration.ignoredResourceForeground": alpha(foreground, "60"),
-    // "gitDecoration.modifiedResourceForeground": ansi.cyan,
+    "gitDecoration.addedResourceForeground": added,
+    "gitDecoration.conflictingResourceForeground": error,
+    "gitDecoration.deletedResourceForeground": removed,
+    "gitDecoration.ignoredResourceForeground": ignored,
+    "gitDecoration.modifiedResourceForeground": modified,
     // "gitDecoration.renamedResourceForeground": "#73c991",
-    // "gitDecoration.stageDeletedResourceForeground": "#c74e39",
-    // "gitDecoration.stageModifiedResourceForeground": "#e2c08d",
+    "gitDecoration.stageDeletedResourceForeground": alpha(removed, "cc"),
+    "gitDecoration.stageModifiedResourceForeground": alpha(modified, "cc"),
     // "gitDecoration.submoduleResourceForeground": "#8db9e2",
-    // "gitDecoration.untrackedResourceForeground": ansi.yellow,
+    "gitDecoration.untrackedResourceForeground": untracked,
 
     // "gitlens.closedAutolinkedIssueIconColor": "#a371f7",
     // "gitlens.closedPullRequestIconColor": "#f85149",
-    // "gitlens.decorations.addedForegroundColor": added,
+    "gitlens.decorations.addedForegroundColor": added,
     // "gitlens.decorations.branchAheadForegroundColor": "#35b15e",
     // "gitlens.decorations.branchBehindForegroundColor": "#b15e35",
     // "gitlens.decorations.branchDivergedForegroundColor": "#d8af1b",
     // "gitlens.decorations.branchMissingUpstreamForegroundColor": "#c74e39",
     // "gitlens.decorations.branchUnpublishedForegroundColor": "#35b15e",
     // "gitlens.decorations.branchUpToDateForegroundColor": "#64727f",
-    // "gitlens.decorations.copiedForegroundColor": "#73c991",
-    // "gitlens.decorations.deletedForegroundColor": ansi.red,
-    // "gitlens.decorations.ignoredForegroundColor": alpha(foreground, "60"),
-    // "gitlens.decorations.modifiedForegroundColor": ansi.cyan,
+    "gitlens.decorations.copiedForegroundColor": added,
+    "gitlens.decorations.deletedForegroundColor": removed,
+    "gitlens.decorations.ignoredForegroundColor": alpha(foreground, "60"),
+    "gitlens.decorations.modifiedForegroundColor": modified,
     // "gitlens.decorations.renamedForegroundColor": "#73c991",
-    // "gitlens.decorations.untrackedForegroundColor": ansi.yellow,
+    "gitlens.decorations.untrackedForegroundColor": untracked,
     // "gitlens.decorations.workspaceCurrentForegroundColor": "#35b15e",
     // "gitlens.decorations.workspaceRepoMissingForegroundColor": "#909090",
     // "gitlens.decorations.workspaceRepoOpenForegroundColor": "#35b15e",
@@ -430,7 +431,6 @@ module.exports = ({
     // "gitlens.decorations.worktreeMissingForegroundColor": "#c74e39",
     // "gitlens.graphChangesColumnAddedColor": "#347d39",
     // "gitlens.graphChangesColumnDeletedColor": "#c93c37",
-    // "gitlens.graphLane10Color": "#2ece9d",
     // "gitlens.graphLane1Color": "#15a0bf",
     // "gitlens.graphLane2Color": "#0669f7",
     // "gitlens.graphLane3Color": "#8e00c2",
@@ -440,6 +440,7 @@ module.exports = ({
     // "gitlens.graphLane7Color": "#f25d2e",
     // "gitlens.graphLane8Color": "#f2ca33",
     // "gitlens.graphLane9Color": "#7bd938",
+    // "gitlens.graphLane10Color": "#2ece9d",
     // "gitlens.graphMinimapMarkerHeadColor": "#05e617",
     // "gitlens.graphMinimapMarkerHighlightsColor": "#fbff0a",
     // "gitlens.graphMinimapMarkerLocalBranchesColor": "#3087cf",
@@ -475,8 +476,8 @@ module.exports = ({
     // "inlineChat.regionHighlight": alpha("#264f78", "40"),
     // "inlineChat.shadow": "#282c35",
 
-    // "inlineChatDiff.inserted": alpha(added, "40"),
-    // "inlineChatDiff.removed": alpha(removed, "40"),
+    "inlineChatDiff.inserted": alpha(added, "40"),
+    "inlineChatDiff.removed": alpha(removed, "40"),
 
     // "inlineChatInput.background": "#1d1f23",
     // "inlineChatInput.border": "#454545",
@@ -731,7 +732,7 @@ module.exports = ({
     // "searchEditor.findMatchBorder": null,
     // "searchEditor.textInputBorder": alpha(foreground, "10"),
 
-    // "selection.background": foreground,
+    "selection.background": selectionBackground,
 
     // "settings.checkboxBackground": ansi.black,
     // "settings.checkboxBorder": ansi.cyan,
@@ -758,9 +759,9 @@ module.exports = ({
     "sideBar.background": background,
     // "sideBar.border": "#232830",
     // "sideBar.dropBackground": alpha("#53595d", "80"),
-    "sideBar.foreground": alpha(foreground, "80"),
+    "sideBar.foreground": alpha(ansi.brightWhite, "99"),
 
-    "sideBarSectionHeader.background": alpha(ansi.black, "80"),
+    "sideBarSectionHeader.background": background,
     // "sideBarSectionHeader.border": null,
     "sideBarSectionHeader.foreground": ansi.brightWhite,
 
@@ -832,18 +833,17 @@ module.exports = ({
     // "symbolIcon.unitForeground": foreground,
     // "symbolIcon.variableForeground": "#75beff",
 
-    // TODO:
-    // "tab.activeBackground": "#2c313a",
+    "tab.activeBackground": ansi.black,
     // "tab.activeBorder": alpha(ansi.blue, "60"),
     // "tab.activeBorderTop": null,
-    // "tab.activeForeground": foreground,
+    "tab.activeForeground": ansi.white,
     // "tab.activeModifiedBorder": "#3399cc",
-    // "tab.border": ansi.brightBlack,
-    // "tab.hoverBackground": alpha(ansi.blue, "30"),
+    "tab.border": alpha(ansi.blue, "66"),
+    "tab.hoverBackground": alpha(ansi.blue, "30"),
     // "tab.hoverBorder": null,
-    // "tab.hoverForeground": null,
-    // "tab.inactiveBackground": background,
-    // "tab.inactiveForeground": foreground,
+    "tab.hoverForeground": alpha(ansi.brightWhite, "80"),
+    "tab.inactiveBackground": background,
+    "tab.inactiveForeground": ansi.brightBlack,
     // "tab.inactiveModifiedBorder": alpha("#3399cc", "80"),
     // "tab.lastPinnedBorder": "#585858",
     // "tab.unfocusedActiveBackground": "#2c313a",
@@ -884,8 +884,8 @@ module.exports = ({
     "terminal.foreground": foreground,
     // "terminal.hoverHighlightBackground": alpha("#264f78", "20"),
     // "terminal.inactiveSelectionBackground": alpha("#677696", "30"),
-    // "terminal.selectionBackground": alpha("#677696", "60"),
-    // "terminal.selectionForeground": null,
+    "terminal.selectionBackground": selectionBackground,
+    "terminal.selectionForeground": selectionForeground,
     // "terminal.tab.activeBorder": alpha(ansi.blue, "60"),
 
     // "terminalCommandDecoration.defaultBackground": alpha(ansi.brightWhite, "40"),
@@ -946,9 +946,9 @@ module.exports = ({
     "welcomePage.progress.background": ansi.black,
     "welcomePage.progress.foreground": ansi.cyan,
     // TODO: apply box styles
-    // "welcomePage.tileBackground": background,
-    // "welcomePage.tileBorder": alpha(ansi.brightWhite, "1a"),
-    // "welcomePage.tileHoverBackground": ansi.black,
+    "welcomePage.tileBackground": boxBackground,
+    "welcomePage.tileBorder": boxBorder,
+    "welcomePage.tileHoverBackground": boxHoverBackground,
 
     // "widget.border": null,
     // "widget.shadow": "#282c35",

@@ -6,31 +6,31 @@ module.exports = {
   type: "dark",
   scheme: {
     ansi: {
-      black: "#17384c", // 00
-      red: "#d15123", // 01
-      green: "#027c9b", // 02
-      yellow: "#fca02f", // 03
-      blue: "#1e4950", // 04
-      magenta: "#68d4f1", // 05
-      cyan: "#50a3b5", // 06
-      white: "#deb88d", // 07
-      brightBlack: "#434b53", // 08
-      brightRed: "#d48678", // 09
-      brightGreen: "#628d98", // 10
-      brightYellow: "#fdd39f", // 11
-      brightBlue: "#1bbcdd", // 12
-      brightMagenta: "#bbe3ee", // 13
-      brightCyan: "#87acb4", // 14
-      brightWhite: "#fee4ce", // 15
+      black: "#17384c",
+      red: "#d15123",
+      green: "#027c9b",
+      yellow: "#fca02f",
+      blue: "#1e4950",
+      magenta: "#68d4f1",
+      cyan: "#50a3b5",
+      white: "#deb88d",
+      brightBlack: "#434b53",
+      brightRed: "#d48678",
+      brightGreen: "#628d98",
+      brightYellow: "#fdd39f",
+      brightBlue: "#1bbcdd",
+      brightMagenta: "#bbe3ee",
+      brightCyan: "#87acb4",
+      brightWhite: "#fee4ce",
     },
 
     background: "#09141b",
     foreground: "#deb88d",
 
     bold: "#ffe4cc",
+    links: "#005cbb", // <- iTerm only
 
-    cursor: "#fca02f",
-    cursorText: "#08131a",
+    cursorText: "#fca02f",
 
     selection: "#1e4962",
     selectedText: "#fee4ce",
