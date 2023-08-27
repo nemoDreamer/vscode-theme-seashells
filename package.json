@@ -16,10 +16,10 @@
     "build:verbose": "npm run build -- -l verbose",
     "dev": "nodemon -w src ./src/build.js -- -l verbose",
     "prepare": "husky install",
-    "prepublish": "vsce package",
     "publish": "vsce publish $(conventional-recommended-bump -p angular)",
     "postpublish": "git push",
-    "version": "standard-changelog && git add CHANGELOG.md"
+    "version": "standard-changelog && git add CHANGELOG.md",
+    "postversion": "vsce package"
   },
   "contributes": {
     "themes": [
