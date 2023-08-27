@@ -1,3 +1,14 @@
+# [0.4.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.3.0...v0.4.0) (2023-08-27)
+
+### Bug Fixes
+
+- **dark:** fix toolbar hover border ([886e1ab](https://github.com/nemoDreamer/vscode-theme-seashells/commit/886e1abc420f9548c910477a526ad5ffdc8b28fb))
+
+### Features
+
+- **dark:** styled widgets, focus, inputs, status~, tool~ & activity-bars ([2af1f12](https://github.com/nemoDreamer/vscode-theme-seashells/commit/2af1f1241545d2d6e74f0560cca017510786dcfa))
+- **dark:** use automatic dark in buttons, widgets, title, status ([9dc6fc3](https://github.com/nemoDreamer/vscode-theme-seashells/commit/9dc6fc3790b1ee453d73e43c3ebc2161759eb413))
+
 # [0.3.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.2.1...v0.3.0) (2023-08-27)
 
 ### Features
