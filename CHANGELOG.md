@@ -1,3 +1,9 @@
+## [0.4.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.0...v0.4.1) (2023-08-27)
+
+### Bug Fixes
+
+- **dark:** fix object string keys ([4cf8f16](https://github.com/nemoDreamer/vscode-theme-seashells/commit/4cf8f16aa6ca2097cfd505418f8c871fe9e5bb87))
+
 # [0.4.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.3.0...v0.4.0) (2023-08-27)
 
 ### Bug Fixes
