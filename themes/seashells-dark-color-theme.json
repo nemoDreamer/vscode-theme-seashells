@@ -156,7 +156,7 @@
     "titleBar.border": "#00000000",
     "toolbar.activeBackground": "#d1512366",
     "toolbar.hoverBackground": "#d1512333",
-    "toolbar.hoverOutline": null,
+    "toolbar.hoverOutline": "#00000000",
     "welcomePage.background": "#17384c33",
     "welcomePage.progress.background": "#17384c",
     "welcomePage.progress.foreground": "#50a3b5",

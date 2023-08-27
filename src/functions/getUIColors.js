@@ -978,7 +978,7 @@ module.exports = ({
 
     "toolbar.activeBackground": alpha(ansi.red, "66"),
     "toolbar.hoverBackground": alpha(ansi.red, "33"),
-    "toolbar.hoverOutline": null,
+    "toolbar.hoverOutline": none,
 
     // "tree.inactiveIndentGuidesStroke": alpha("#585858", "66"),
     // "tree.indentGuidesStroke": "#585858",
