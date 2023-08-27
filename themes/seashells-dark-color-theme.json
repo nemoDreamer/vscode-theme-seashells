@@ -3,16 +3,16 @@
   "type": "dark",
   "$schema": "vscode://schemas/color-theme",
   "colors": {
-    "activityBar.activeBackground": "#1e4950",
+    "activityBar.activeBackground": "#027c9b",
     "activityBar.background": "#09141b",
     "activityBar.foreground": "#87acb4",
-    "activityBar.inactiveForeground": "#87acb433",
+    "activityBar.inactiveForeground": "#87acb466",
     "activityBarBadge.background": "#027c9b",
     "activityBarBadge.foreground": "#fee4ce",
     "badge.background": "#d15123",
     "badge.foreground": "#fee4ce",
     "button.background": "#deb88d80",
-    "button.border": null,
+    "button.border": "#00000000",
     "button.foreground": "#fee4ce",
     "button.secondaryBackground": "#1e4950",
     "button.secondaryForeground": "#deb88d",
@@ -25,19 +25,19 @@
     "charts.purple": "#68d4f1",
     "charts.red": "#d15123",
     "charts.yellow": "#fdd39f",
-    "diffEditor.border": null,
+    "diffEditor.border": "#00000000",
     "diffEditor.diagonalFill": "#17384c80",
     "diffEditor.insertedLineBackground": "#027c9b33",
     "diffEditor.insertedTextBackground": "#027c9b80",
-    "diffEditor.insertedTextBorder": null,
+    "diffEditor.insertedTextBorder": "#00000000",
     "diffEditor.removedLineBackground": "#d1512333",
     "diffEditor.removedTextBackground": "#d1512380",
-    "diffEditor.removedTextBorder": null,
+    "diffEditor.removedTextBorder": "#00000000",
     "disabledForeground": "#deb88d80",
     "editor.background": "#09141b",
     "editor.foreground": "#deb88d",
     "editor.lineHighlightBackground": "#17384c33",
-    "editor.lineHighlightBorder": null,
+    "editor.lineHighlightBorder": "#00000000",
     "editor.selectionBackground": "#1e4962",
     "editor.selectionForeground": "#fee4ce",
     "editorCursor.foreground": "#fca02f",
@@ -45,7 +45,7 @@
     "editorGroup.border": "#17384c33",
     "editorGroup.dropBackground": "#17384c33",
     "editorGroup.dropIntoPromptBackground": "#17384c80",
-    "editorGroup.dropIntoPromptBorder": null,
+    "editorGroup.dropIntoPromptBorder": "#00000000",
     "editorGroup.dropIntoPromptForeground": "#434b53",
     "editorGroupHeader.tabsBackground": "#09141b",
     "editorGutter.addedBackground": "#027c9b",
@@ -80,14 +80,14 @@
     "inlineChatDiff.removed": "#d1512340",
     "list.activeSelectionBackground": "#17384c",
     "list.activeSelectionForeground": "#deb88d",
-    "list.activeSelectionIconForeground": null,
+    "list.activeSelectionIconForeground": "#00000000",
     "list.errorForeground": "#d15123",
     "list.focusOutline": "#deb88d00",
     "list.hoverBackground": "#17384c66",
     "list.hoverForeground": "#deb88d",
     "list.inactiveSelectionBackground": "#17384c80",
     "list.inactiveSelectionForeground": "#deb88d",
-    "list.inactiveSelectionIconForeground": null,
+    "list.inactiveSelectionIconForeground": "#00000000",
     "list.invalidItemForeground": "#d15123",
     "list.warningForeground": "#fca02f",
     "problemsErrorIcon.foreground": "#d15123",
@@ -145,6 +145,24 @@
       "scope": "string",
       "settings": {
         "foreground": "#027c9b"
+      }
+    },
+    {
+      "scope": "string.quoted",
+      "settings": {
+        "foreground": "#deb88d"
+      }
+    },
+    {
+      "scope": "string.template",
+      "settings": {
+        "foreground": "#027c9b"
+      }
+    },
+    {
+      "scope": "string.template punctuation",
+      "settings": {
+        "foreground": "#50a3b5"
       }
     },
     {
@@ -246,6 +264,13 @@
       }
     },
     {
+      "scope": "new.expr entity.name.function",
+      "settings": {
+        "foreground": "#fee4ce",
+        "fontStyle": "bold"
+      }
+    },
+    {
       "scope": "storage.type, storage.modifier",
       "settings": {
         "foreground": "#027c9b",
@@ -268,7 +293,7 @@
     {
       "scope": "entity.name.type, entity.other.inherited-class",
       "settings": {
-        "foreground": "#68d4f1"
+        "foreground": "#fee4ce"
       }
     },
     {

@@ -1,41 +1,9 @@
 const { alpha } = require("./utils");
 
 /*
-From `colors`:
----
-- "symbolIcon.arrayForeground"
-- "symbolIcon.booleanForeground"
-- "symbolIcon.classForeground": A
-- "symbolIcon.colorForeground"
-- "symbolIcon.constantForeground"
-- "symbolIcon.constructorForeground": B
-- "symbolIcon.enumeratorForeground": A
-- "symbolIcon.enumeratorMemberForeground": C
-- "symbolIcon.eventForeground": A
-- "symbolIcon.fieldForeground": C
-- "symbolIcon.fileForeground"
-- "symbolIcon.folderForeground"
-- "symbolIcon.functionForeground": B
-- "symbolIcon.interfaceForeground": C
-- "symbolIcon.keyForeground"
-- "symbolIcon.keywordForeground"
-- "symbolIcon.methodForeground": B
-- "symbolIcon.moduleForeground"
-- "symbolIcon.namespaceForeground"
-- "symbolIcon.nullForeground"
-- "symbolIcon.numberForeground"
-- "symbolIcon.objectForeground"
-- "symbolIcon.operatorForeground"
-- "symbolIcon.packageForeground"
-- "symbolIcon.propertyForeground"
-- "symbolIcon.referenceForeground"
-- "symbolIcon.snippetForeground"
-- "symbolIcon.stringForeground"
-- "symbolIcon.structForeground"
-- "symbolIcon.textForeground"
-- "symbolIcon.typeParameterForeground"
-- "symbolIcon.unitForeground"
-- "symbolIcon.variableForeground": C
+TODO:
+- [x] less yellow, more white
+- [x] better strings
 */
 
 module.exports = ({
@@ -44,6 +12,15 @@ module.exports = ({
   // background,
 }) => [
   { scope: "string", settings: { foreground: ansi.green } },
+  { scope: "string.quoted", settings: { foreground } },
+  {
+    scope: "string.template",
+    settings: { foreground: ansi.green },
+  },
+  {
+    scope: "string.template punctuation",
+    settings: { foreground: ansi.cyan },
+  },
   {
     scope: "constant.language",
     settings: { foreground: ansi.yellow, fontStyle: "italic" },
@@ -93,6 +70,10 @@ module.exports = ({
     settings: { foreground: ansi.cyan },
   },
   {
+    scope: "new.expr entity.name.function",
+    settings: { foreground: ansi.brightWhite, fontStyle: "bold" },
+  },
+  {
     scope: "storage.type, storage.modifier",
     settings: { foreground: ansi.green, fontStyle: "italic" },
   },
@@ -103,7 +84,7 @@ module.exports = ({
   { scope: "support.type", settings: { foreground: ansi.magenta } },
   {
     scope: "entity.name.type, entity.other.inherited-class",
-    settings: { foreground: ansi.magenta },
+    settings: { foreground: ansi.brightWhite /* ansi.magenta */ },
   },
   {
     scope: "comment",

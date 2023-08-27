@@ -1,5 +1,29 @@
 const { alpha } = require("./utils");
 
+/*
+TODO:
+
+- [ ] **complete first pass on:**
+  - [x] info/warning/error/success statuses
+  - [x] DIFF styling
+  - [ ] gitlens
+  - [x] git-decorations
+  - [x] selection
+  - [ ] highlight
+  - [ ] focus borders
+  - [ ] inputs / settings
+  - [ ] searching / filtering
+  - [ ] boxes, popovers, menus
+  - [ ] toolbar
+  - [ ] progress bars
+- [ ] **complete second pass on:**
+  - [ ] activity bar
+  - [ ] status bar
+  - [x] sidebar / explorer
+  - [x] tabs
+  - [x] buttons
+*/
+
 module.exports = ({
   ansi,
   foreground,
@@ -10,6 +34,8 @@ module.exports = ({
   selection: selectionBackground,
   selectedText: selectionForeground,
 }) => {
+  const none = "#00000000";
+
   const added = ansi.green; // syn. "inserted"
   const removed = ansi.red; // syn. "deleted"
   const modified = ansi.cyan;
@@ -27,14 +53,14 @@ module.exports = ({
   const boxBorder = alpha(ansi.brightWhite, "33");
 
   return {
-    "activityBar.activeBackground": ansi.blue,
+    "activityBar.activeBackground": ansi.green,
     // "activityBar.activeBorder": ansi.brightWhite,
     // "activityBar.activeFocusBorder": null,
     "activityBar.background": background, // alpha(ansi.blue, "11"),
     // "activityBar.border": ansi.brightBlack,
     // "activityBar.dropBorder": foreground,
     "activityBar.foreground": ansi.brightCyan,
-    "activityBar.inactiveForeground": alpha(ansi.brightCyan, "33"),
+    "activityBar.inactiveForeground": alpha(ansi.brightCyan, "66"),
 
     "activityBarBadge.background": ansi.green,
     "activityBarBadge.foreground": ansi.brightWhite,
@@ -54,7 +80,7 @@ module.exports = ({
     // "breadcrumbPicker.background": background,
 
     "button.background": alpha(ansi.white, "80"),
-    "button.border": null,
+    "button.border": none,
     "button.foreground": ansi.brightWhite,
     // "button.hoverBackground": ansi.white,
     "button.secondaryBackground": ansi.blue,
@@ -140,15 +166,15 @@ module.exports = ({
 
     // descriptionForeground: foreground,
 
-    "diffEditor.border": null,
+    "diffEditor.border": none,
     "diffEditor.diagonalFill": alpha(ansi.black, "80"),
     "diffEditor.insertedLineBackground": alpha(added, "33"),
     "diffEditor.insertedTextBackground": alpha(added, "80"),
-    "diffEditor.insertedTextBorder": null,
+    "diffEditor.insertedTextBorder": none,
     // "diffEditor.move.border": alpha("#8b8b8b", "9c"),
     "diffEditor.removedLineBackground": alpha(removed, "33"),
     "diffEditor.removedTextBackground": alpha(removed, "80"),
-    "diffEditor.removedTextBorder": null,
+    "diffEditor.removedTextBorder": none,
     // "diffEditor.unchangedCodeBackground": alpha("#747474", "29"),
     // "diffEditor.unchangedRegionBackground": "#3e3e3e",
     // "diffEditor.unchangedRegionForeground": "#a3a2a2",
@@ -182,7 +208,7 @@ module.exports = ({
     // "editor.inlineValuesBackground": alpha("#ffc800", "33"),
     // "editor.inlineValuesForeground": alpha(ansi.brightWhite, "80"),
     "editor.lineHighlightBackground": alpha(ansi.black, "33"),
-    "editor.lineHighlightBorder": null,
+    "editor.lineHighlightBorder": none,
     // "editor.linkedEditingBackground": alpha("#ff0000", "4d"),
     // "editor.rangeHighlightBackground": alpha(ansi.blue, "30"),
     // "editor.rangeHighlightBorder": null,
@@ -251,7 +277,7 @@ module.exports = ({
     "editorGroup.border": alpha(ansi.black, "33"),
     "editorGroup.dropBackground": alpha(ansi.black, "33"),
     "editorGroup.dropIntoPromptBackground": boxBackground,
-    "editorGroup.dropIntoPromptBorder": null,
+    "editorGroup.dropIntoPromptBorder": none,
     "editorGroup.dropIntoPromptForeground": boxForeground,
     // "editorGroup.emptyBackground": null,
     // "editorGroup.focusedEmptyBorder": null,
@@ -523,7 +549,7 @@ module.exports = ({
     // TODO: sidebar / explorer lists:
     "list.activeSelectionBackground": ansi.black,
     "list.activeSelectionForeground": foreground,
-    "list.activeSelectionIconForeground": null,
+    "list.activeSelectionIconForeground": none,
     // "list.deemphasizedForeground": "#8c8c8c",
     // "list.dropBackground": "#062f4a",
     "list.errorForeground": error,
@@ -541,7 +567,7 @@ module.exports = ({
     // "list.inactiveFocusOutline": null,
     "list.inactiveSelectionBackground": alpha(ansi.black, "80"),
     "list.inactiveSelectionForeground": foreground,
-    "list.inactiveSelectionIconForeground": null,
+    "list.inactiveSelectionIconForeground": none,
     "list.invalidItemForeground": error,
     "list.warningForeground": warning,
 
