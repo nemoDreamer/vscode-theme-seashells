@@ -170,12 +170,6 @@
     {
       "scope": "string",
       "settings": {
-        "foreground": "#027c9b"
-      }
-    },
-    {
-      "scope": "string.quoted",
-      "settings": {
         "foreground": "#deb88d"
       }
     },
@@ -235,7 +229,7 @@
       }
     },
     {
-      "scope": "variable.object.property, variable.other.object.property",
+      "scope": "variable.object.property, meta.field.declaration string, variable.other.object.property",
       "settings": {
         "foreground": "#027c9b"
       }

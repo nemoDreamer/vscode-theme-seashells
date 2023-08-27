@@ -11,8 +11,7 @@ module.exports = ({
   foreground,
   // background,
 }) => [
-  { scope: "string", settings: { foreground: ansi.green } },
-  { scope: "string.quoted", settings: { foreground } },
+  { scope: "string", settings: { foreground } },
   {
     scope: "string.template",
     settings: { foreground: ansi.green },
@@ -38,7 +37,8 @@ module.exports = ({
   },
   { scope: "variable.parameter", settings: { fontStyle: "italic" } },
   {
-    scope: "variable.object.property, variable.other.object.property",
+    scope:
+      "variable.object.property, meta.field.declaration string, variable.other.object.property",
     settings: { foreground: ansi.green },
   },
   {
