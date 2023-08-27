@@ -1,3 +1,4 @@
+const chroma = require("chroma-js");
 const { alpha } = require("./utils");
 
 /*
@@ -10,15 +11,15 @@ TODO:
   - [x] git-decorations
   - [x] selection
   - [ ] highlight
-  - [ ] focus borders
-  - [ ] inputs / settings
+  - [x] focus borders
+  - [x] inputs / settings
   - [ ] searching / filtering
-  - [ ] boxes, popovers, menus
-  - [ ] toolbar
+  - [x] boxes, widgets, menus
+  - [x] toolbar
   - [ ] progress bars
 - [ ] **complete second pass on:**
-  - [ ] activity bar
-  - [ ] status bar
+  - [x] activity bar
+  - [x] status bar
   - [x] sidebar / explorer
   - [x] tabs
   - [x] buttons
@@ -36,21 +37,36 @@ module.exports = ({
 }) => {
   const none = "#00000000";
 
+  // diffs:
   const added = ansi.green; // syn. "inserted"
   const removed = ansi.red; // syn. "deleted"
   const modified = ansi.cyan;
   const ignored = alpha(foreground, "66");
   const untracked = ansi.yellow;
 
+  // statuses:
   const info = ansi.blue;
   const warning = ansi.yellow;
   const error = ansi.red;
   // const success = ansi.green;
 
+  // additional dark variants:
+  const darkBlack = chroma.mix(background, ansi.black, 0.25, "lab").hex();
+  const darkForeground = chroma.mix(background, foreground, 0.25, "lab").hex();
+
+  // boxes:
   const boxBackground = alpha(ansi.black, "80");
   const boxHoverBackground = alpha(ansi.black, "99");
   const boxForeground = ansi.brightBlack;
   const boxBorder = alpha(ansi.brightWhite, "33");
+
+  // widgets:
+  const widgetBackground = darkForeground;
+  const widgetBorder = chroma(widgetBackground).brighten(2).alpha(0.33).hex();
+  const widgetForeground = foreground;
+  const widgetHighlightForeground = ansi.brightWhite;
+  const widgetStatusBarBackground = background;
+  const widgetShadow = "#00000066";
 
   return {
     "activityBar.activeBackground": ansi.green,
@@ -79,7 +95,7 @@ module.exports = ({
 
     // "breadcrumbPicker.background": background,
 
-    "button.background": alpha(ansi.white, "80"),
+    "button.background": darkForeground,
     "button.border": none,
     "button.foreground": ansi.brightWhite,
     // "button.hoverBackground": ansi.white,
@@ -299,11 +315,11 @@ module.exports = ({
     // "editorHint.border": null,
     // "editorHint.foreground": alpha("#eeeeee", "b3"),
 
-    // "editorHoverWidget.background": background,
-    // "editorHoverWidget.border": "#181a1f",
-    // "editorHoverWidget.foreground": foreground,
-    // "editorHoverWidget.highlightForeground": "#c5c5c5",
-    // "editorHoverWidget.statusBarBackground": ansi.black,
+    "editorHoverWidget.background": widgetBackground,
+    "editorHoverWidget.border": widgetBorder,
+    "editorHoverWidget.foreground": widgetForeground,
+    "editorHoverWidget.highlightForeground": widgetHighlightForeground,
+    "editorHoverWidget.statusBarBackground": widgetStatusBarBackground,
 
     // "editorIndentGuide.activeBackground1": "#3b4048",
     // "editorIndentGuide.activeBackground2": alpha("#000000", "00"),
@@ -397,9 +413,9 @@ module.exports = ({
 
     // "editorWhitespace.foreground": "#3b4048",
 
-    // "editorWidget.background": background,
-    // "editorWidget.border": "#454545",
-    // "editorWidget.foreground": foreground,
+    "editorWidget.background": widgetBackground,
+    "editorWidget.border": widgetBorder,
+    "editorWidget.foreground": widgetForeground,
     // "editorWidget.resizeBorder": null,
 
     errorForeground: ansi.red,
@@ -420,7 +436,7 @@ module.exports = ({
     // "extensionIcon.starForeground": "#ff8e00",
     // "extensionIcon.verifiedForeground": ansi.cyan,
 
-    // focusBorder: alpha(foreground, "00"),
+    focusBorder: alpha(ansi.cyan, "99"),
 
     foreground,
 
@@ -548,7 +564,7 @@ module.exports = ({
 
     // TODO: sidebar / explorer lists:
     "list.activeSelectionBackground": ansi.black,
-    "list.activeSelectionForeground": foreground,
+    "list.activeSelectionForeground": ansi.brightWhite,
     "list.activeSelectionIconForeground": none,
     // "list.deemphasizedForeground": "#8c8c8c",
     // "list.dropBackground": "#062f4a",
@@ -556,16 +572,16 @@ module.exports = ({
     // "list.filterMatchBackground": "#314365",
     // "list.filterMatchBorder": null,
     // "list.focusAndSelectionOutline": null,
-    // "list.focusBackground": "#383e4a",
-    // "list.focusForeground": "#dfe1e8",
+    "list.focusBackground": alpha(ansi.black, "99"),
+    "list.focusForeground": foreground,
     // "list.focusHighlightForeground": "#c5c5c5",
-    "list.focusOutline": alpha(foreground, "00"),
+    "list.focusOutline": none,
     // "list.highlightForeground": "#c5c5c5",
     "list.hoverBackground": alpha(ansi.black, "66"),
     "list.hoverForeground": ansi.white,
-    // "list.inactiveFocusBackground": null,
-    // "list.inactiveFocusOutline": null,
-    "list.inactiveSelectionBackground": alpha(ansi.black, "80"),
+    "list.inactiveFocusBackground": alpha(ansi.black, "66"),
+    "list.inactiveFocusOutline": none,
+    "list.inactiveSelectionBackground": alpha(ansi.black, "99"),
     "list.inactiveSelectionForeground": foreground,
     "list.inactiveSelectionIconForeground": none,
     "list.invalidItemForeground": error,
@@ -796,34 +812,39 @@ module.exports = ({
     // "sideBySideEditor.horizontalBorder": "#181a1f",
     // "sideBySideEditor.verticalBorder": "#181a1f",
 
-    // TODO:
+    // Status Bar:
     "statusBar.background": background,
-    // "statusBar.border": ansi.brightBlack,
-    // "statusBar.debuggingBackground": ansi.magenta,
-    // "statusBar.debuggingBorder": ansi.magenta,
-    // "statusBar.debuggingForeground": ansi.brightWhite,
-    // "statusBar.focusBorder": "#9da5b4",
     "statusBar.foreground": ansi.brightBlack,
+    "statusBar.border": none,
+    // "statusBar.focusBorder": "#9da5b4",
+    // - debugging:
+    "statusBar.debuggingBackground": ansi.magenta,
+    // "statusBar.debuggingForeground": ansi.brightWhite,
+    // "statusBar.debuggingBorder": ansi.magenta,
+    // - no folder (?):
     // "statusBar.noFolderBackground": background,
     // "statusBar.noFolderBorder": ansi.brightBlack,
     // "statusBar.noFolderForeground": "#9da5b4",
+    // - offline:
     // "statusBar.offlineBackground": "#6c1717",
     // "statusBar.offlineForeground": "#f8fafd",
 
-    // TODO:
-    // "statusBarItem.activeBackground": alpha(ansi.brightWhite, "2e"),
-    // "statusBarItem.compactHoverBackground": alpha(ansi.brightWhite, "33"),
-    // "statusBarItem.errorBackground": "#7b3239",
-    // "statusBarItem.errorForeground": ansi.brightWhite,
+    "statusBarItem.activeBackground": alpha(ansi.brightWhite, "ff"),
     // "statusBarItem.focusBorder": "#9da5b4",
-    // "statusBarItem.hoverBackground": "#2c313a",
+    "statusBarItem.hoverBackground": darkBlack,
+    // "statusBarItem.compactHoverBackground": alpha(ansi.brightWhite, "33"),
+    // - prominent (?):
     // "statusBarItem.prominentBackground": alpha("#000000", "80"),
     // "statusBarItem.prominentForeground": "#9da5b4",
     // "statusBarItem.prominentHoverBackground": alpha("#000000", "4d"),
+    // - remote (?):
     // "statusBarItem.remoteBackground": ansi.blue,
     // "statusBarItem.remoteForeground": "#f8fafd",
-    // "statusBarItem.warningBackground": alpha(warning, "1a"),
-    // "statusBarItem.warningForeground": warning,
+    // - statuses:
+    "statusBarItem.errorBackground": error,
+    "statusBarItem.errorForeground": ansi.brightWhite,
+    "statusBarItem.warningBackground": warning,
+    "statusBarItem.warningForeground": darkForeground,
 
     // "symbolIcon.arrayForeground": foreground,
     // "symbolIcon.booleanForeground": foreground,
@@ -950,15 +971,15 @@ module.exports = ({
 
     // "textSeparator.foreground": alpha(ansi.brightWhite, "2e"),
 
-    "titleBar.activeBackground": ansi.black,
+    "titleBar.activeBackground": darkBlack,
     "titleBar.activeForeground": ansi.cyan,
-    "titleBar.border": alpha(ansi.brightBlack, "60"),
+    "titleBar.border": none,
     // "titleBar.inactiveBackground": alpha(ansi.black, "80"),
     // "titleBar.inactiveForeground": "#6b717d",
 
-    // "toolbar.activeBackground": alpha("#636667", "50"),
-    // "toolbar.hoverBackground": alpha("#5a5d5e", "50"),
-    // "toolbar.hoverOutline": null,
+    "toolbar.activeBackground": alpha(ansi.red, "66"),
+    "toolbar.hoverBackground": alpha(ansi.red, "33"),
+    "toolbar.hoverOutline": null,
 
     // "tree.inactiveIndentGuidesStroke": alpha("#585858", "66"),
     // "tree.indentGuidesStroke": "#585858",
@@ -976,8 +997,8 @@ module.exports = ({
     "welcomePage.tileBorder": boxBorder,
     "welcomePage.tileHoverBackground": boxHoverBackground,
 
-    // "widget.border": null,
-    // "widget.shadow": "#282c35",
+    "widget.border": widgetBorder,
+    "widget.shadow": widgetShadow,
 
     // "window.activeBorder": null,
     // "window.inactiveBorder": null,
