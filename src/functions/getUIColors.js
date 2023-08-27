@@ -28,6 +28,7 @@ TODO:
 module.exports = ({
   ansi,
   foreground,
+  darkForeground,
   background,
   // bold,
   // links,
@@ -50,10 +51,6 @@ module.exports = ({
   const error = ansi.red;
   // const success = ansi.green;
 
-  // additional dark variants:
-  const darkBlack = chroma.mix(background, ansi.black, 0.25, "lab").hex();
-  const darkForeground = chroma.mix(background, foreground, 0.25, "lab").hex();
-
   // boxes:
   const boxBackground = alpha(ansi.black, "80");
   const boxHoverBackground = alpha(ansi.black, "99");
@@ -61,8 +58,8 @@ module.exports = ({
   const boxBorder = alpha(ansi.brightWhite, "33");
 
   // widgets:
-  const widgetBackground = darkForeground;
-  const widgetBorder = chroma(widgetBackground).brighten(2).alpha(0.33).hex();
+  const widgetBackground = ansi.darkBlack;
+  const widgetBorder = none; // chroma(ansi.brightBlack).alpha(0.5).hex();
   const widgetForeground = foreground;
   const widgetHighlightForeground = ansi.brightWhite;
   const widgetStatusBarBackground = background;
@@ -831,7 +828,7 @@ module.exports = ({
 
     "statusBarItem.activeBackground": alpha(ansi.brightWhite, "ff"),
     // "statusBarItem.focusBorder": "#9da5b4",
-    "statusBarItem.hoverBackground": darkBlack,
+    "statusBarItem.hoverBackground": ansi.darkBlack,
     // "statusBarItem.compactHoverBackground": alpha(ansi.brightWhite, "33"),
     // - prominent (?):
     // "statusBarItem.prominentBackground": alpha("#000000", "80"),
@@ -880,7 +877,7 @@ module.exports = ({
     // "symbolIcon.unitForeground": foreground,
     // "symbolIcon.variableForeground": "#75beff",
 
-    "tab.activeBackground": ansi.black,
+    "tab.activeBackground": ansi.darkBlack,
     // "tab.activeBorder": alpha(ansi.blue, "60"),
     // "tab.activeBorderTop": null,
     "tab.activeForeground": ansi.white,
@@ -971,8 +968,10 @@ module.exports = ({
 
     // "textSeparator.foreground": alpha(ansi.brightWhite, "2e"),
 
-    "titleBar.activeBackground": darkBlack,
-    "titleBar.activeForeground": ansi.cyan,
+    "titleBar.activeBackground": chroma
+      .mix(background, ansi.green, 0.125, "lch")
+      .hex(),
+    "titleBar.activeForeground": ansi.brightGreen,
     "titleBar.border": none,
     // "titleBar.inactiveBackground": alpha(ansi.black, "80"),
     // "titleBar.inactiveForeground": "#6b717d",

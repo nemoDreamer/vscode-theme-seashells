@@ -59,7 +59,7 @@ module.exports = ({
   {
     scope:
       "keyword.control.import, keyword.control.from, keyword.control.export, keyword.control.default",
-    settings: { fontStyle: "italic" },
+    settings: { foreground: ansi.brightWhite, fontStyle: "italic" },
   },
   {
     scope: "keyword.control.flow",
@@ -123,6 +123,10 @@ module.exports = ({
     settings: { foreground: ansi.green },
   },
   { scope: "entity.name.tag", settings: { foreground: ansi.cyan } },
+  {
+    scope: "meta.tag entity.other.attribute-name",
+    settings: { foreground: ansi.green },
+  },
   {
     scope: "entity.other.attribute-name",
     settings: { foreground: ansi.yellow },
