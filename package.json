@@ -1,7 +1,7 @@
 {
   "name": "vscode-theme-seashells",
   "displayName": "SeaShells Theme",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "categories": [
     "Themes"

@@ -1,3 +1,9 @@
+# [0.5.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.1...v0.5.0) (2023-08-28)
+
+### Features
+
+- **dark:** bake alpha in preparation for Light theme ([34590f0](https://github.com/nemoDreamer/vscode-theme-seashells/commit/34590f0e99d785e9d4b6956be2e335834987d6eb))
+
 ## [0.4.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.0...v0.4.1) (2023-08-27)
 
 ### Bug Fixes
