@@ -1,11 +1,32 @@
 const chroma = require("chroma-js");
 
 /**
- * @param {String} hexColor
- * @param {String} hexAlpha
+ * @param {String} fg
+ * @param {Number} ratio
  * @returns {String}
  */
-const alpha = (hexColor, hexAlpha) => `${hexColor}${hexAlpha}`;
+const alpha = (fg, ratio) => chroma(fg).alpha(ratio).hex();
+
+/**
+ * @param {String} background
+ */
+const makeAlphaB =
+  (background) =>
+  /**
+   * @param {String} fg
+   * @param {Number} ratio
+   * @returns {String}
+   */
+  (fg, ratio = 0.5) =>
+    chroma.mix(background, fg, ratio, "rgb").hex();
+
+/**
+ * @param {String} bg
+ * @param {String} fg
+ * @param {Number} ratio
+ * @returns {String}
+ */
+const alphaC = (bg, fg, ratio = 0.5) => chroma.mix(bg, fg, ratio, "rgb").hex();
 
 /**
  * @param {String} hexColor
@@ -25,6 +46,18 @@ const invertLuminance = (hexColor) => {
   return chroma.lch([100 - l, c, h]).hex();
 };
 
+const lighten = (hexColor) =>
+  chroma(hexColor)
+    .set("lab.l", "*1.5")
+    // .saturate(1)
+    .hex();
+
+const darken = (hexColor) =>
+  chroma(hexColor)
+    .set("lab.l", "*0.5")
+    .desaturate(1) // <- nudge
+    .hex();
+
 const assignVariations = (obj) => {
   Object.entries(obj)
     .filter(([key]) => !/^(bright|dark)/.test(key))
@@ -38,17 +71,11 @@ const assignVariations = (obj) => {
         /* eslint-disable no-param-reassign */
         // brighten?
         if (!obj[brightName]) {
-          obj[brightName] = chroma(value)
-            .set("lab.l", "*1.5")
-            // .saturate(1)
-            .hex();
+          obj[brightName] = lighten(value);
         }
         // darken?
         if (!obj[darkName]) {
-          obj[darkName] = chroma(value)
-            .set("lab.l", "*0.5")
-            .desaturate(1)
-            .hex();
+          obj[darkName] = darken(value);
         }
       } else {
         assignVariations(value);
@@ -76,6 +103,8 @@ const processColors = (scheme, callback) => {
 
 module.exports = {
   alpha,
+  makeAlphaB,
+  alphaC,
   invert,
   invertLuminance,
   assignVariations,

@@ -1,5 +1,5 @@
 const chroma = require("chroma-js");
-const { alpha } = require("./utils");
+const { makeAlphaB, alphaC, alpha } = require("./utils");
 
 /*
 TODO:
@@ -31,19 +31,22 @@ module.exports = ({
   darkForeground,
   brightForeground,
   background,
+  // darkBackground,
   // bold,
   // links,
   cursorText,
   selection: selectionBackground,
   selectedText: selectionForeground,
 }) => {
+  const alphaB = makeAlphaB(background);
+
   const none = "#00000000";
 
   // diffs:
   const added = ansi.green; // syn. "inserted"
   const removed = ansi.red; // syn. "deleted"
   const modified = ansi.cyan;
-  const ignored = alpha(foreground, "66");
+  const ignored = alpha(foreground, 0.4);
   const untracked = ansi.yellow;
 
   // statuses:
@@ -53,28 +56,28 @@ module.exports = ({
   // const success = ansi.green;
 
   // boxes:
-  const boxBackground = alpha(ansi.black, "80");
-  const boxHoverBackground = alpha(ansi.black, "99");
-  const boxForeground = ansi.brightBlack;
-  const boxBorder = alpha(brightForeground, "33");
+  const boxBackground = alphaB(ansi.black, 0.5);
+  const boxHoverBackground = alphaB(ansi.black, 0.75);
+  const boxForeground = alphaC(boxBackground, ansi.brightBlack, 0.75);
+  const boxBorder = alphaB(brightForeground, 0.25);
 
   // widgets:
-  const widgetBackground = ansi.darkBlack;
-  const widgetBorder = none; // chroma(ansi.brightBlack).alpha(0.5).hex();
+  const widgetBackground = alphaB(darkForeground, 0.5);
+  const widgetBorder = chroma(foreground).alpha(0.25).hex();
   const widgetForeground = foreground;
   const widgetHighlightForeground = brightForeground;
   const widgetStatusBarBackground = background;
   const widgetShadow = "#00000066";
 
   return {
-    "activityBar.activeBackground": ansi.green,
+    "activityBar.activeBackground": alphaB(ansi.green, 0.5),
     // "activityBar.activeBorder": brightForeground,
     // "activityBar.activeFocusBorder": null,
-    "activityBar.background": background, // alpha(ansi.blue, "11"),
+    "activityBar.background": background,
     // "activityBar.border": ansi.brightBlack,
     // "activityBar.dropBorder": foreground,
     "activityBar.foreground": ansi.brightCyan,
-    "activityBar.inactiveForeground": alpha(ansi.brightCyan, "66"),
+    "activityBar.inactiveForeground": alphaB(ansi.brightCyan, 0.4),
 
     "activityBarBadge.background": ansi.green,
     "activityBarBadge.foreground": brightForeground,
@@ -89,7 +92,7 @@ module.exports = ({
     // "breadcrumb.activeSelectionForeground": "#828aa0",
     // "breadcrumb.background": ansi.black,
     // "breadcrumb.focusForeground": "#828aa0",
-    // "breadcrumb.foreground": alpha(foreground, "cc"),
+    // "breadcrumb.foreground": alphaB(foreground, 0.8),
 
     // "breadcrumbPicker.background": background,
 
@@ -100,12 +103,12 @@ module.exports = ({
     "button.secondaryBackground": ansi.blue,
     "button.secondaryForeground": foreground,
     // "button.secondaryHoverBackground": ansi.brightBlue,
-    "button.separator": alpha(foreground, "66"),
+    "button.separator": alphaB(foreground, 0.4),
 
     "charts.blue": ansi.blue,
     "charts.foreground": foreground,
     "charts.green": ansi.green,
-    "charts.lines": alpha(foreground, "80"),
+    "charts.lines": alphaB(foreground, 0.5),
     "charts.orange": ansi.yellow,
     "charts.purple": ansi.magenta,
     "charts.red": ansi.red,
@@ -125,12 +128,12 @@ module.exports = ({
     // "commandCenter.activeBorder": alpha("#9da5b4", "4d"),
     // "commandCenter.activeForeground": "#9da5b4",
     // "commandCenter.background": alpha(brightForeground, "0d"),
-    // "commandCenter.border": alpha("#9da5b4", "33"),
+    // "commandCenter.border": alphaB("#9da5b4", 0.2),
     // "commandCenter.foreground": "#9da5b4",
-    // "commandCenter.inactiveBorder": alpha("#6b717d", "40"),
+    // "commandCenter.inactiveBorder": alphaB("#6b717d", 0.2),
     // "commandCenter.inactiveForeground": "#6b717d",
 
-    // "commentsView.resolvedIcon": alpha("#cccccc", "80"),
+    // "commentsView.resolvedIcon": alphaB("#cccccc", 0.5),
     // "commentsView.unresolvedIcon": alpha(foreground, "00"),
 
     // contrastActiveBorder: null,
@@ -167,7 +170,7 @@ module.exports = ({
     // "debugTokenExpression.name": "#c586c0",
     // "debugTokenExpression.number": "#b5cea8",
     // "debugTokenExpression.string": "#ce9178",
-    // "debugTokenExpression.value": alpha("#cccccc", "99"),
+    // "debugTokenExpression.value": alphaB("#cccccc", 0.6),
 
     // "debugToolBar.background": background,
     // "debugToolBar.border": null,
@@ -181,13 +184,13 @@ module.exports = ({
     // descriptionForeground: foreground,
 
     "diffEditor.border": none,
-    "diffEditor.diagonalFill": alpha(ansi.black, "80"),
-    "diffEditor.insertedLineBackground": alpha(added, "33"),
-    "diffEditor.insertedTextBackground": alpha(added, "80"),
+    "diffEditor.diagonalFill": alphaB(ansi.black, 0.5),
+    "diffEditor.insertedLineBackground": alpha(added, 0.2),
+    "diffEditor.insertedTextBackground": alpha(added, 0.5),
     "diffEditor.insertedTextBorder": none,
     // "diffEditor.move.border": alpha("#8b8b8b", "9c"),
-    "diffEditor.removedLineBackground": alpha(removed, "33"),
-    "diffEditor.removedTextBackground": alpha(removed, "80"),
+    "diffEditor.removedLineBackground": alpha(removed, 0.2),
+    "diffEditor.removedTextBackground": alpha(removed, 0.5),
     "diffEditor.removedTextBorder": none,
     // "diffEditor.unchangedCodeBackground": alpha("#747474", "29"),
     // "diffEditor.unchangedRegionBackground": "#3e3e3e",
@@ -197,7 +200,7 @@ module.exports = ({
     // "diffEditorOverview.insertedForeground": null,
     // "diffEditorOverview.removedForeground": null,
 
-    disabledForeground: alpha(foreground, "80"),
+    disabledForeground: alphaB(foreground, 0.5),
 
     // TODO:
     // "dropdown.background": "#1d1f23",
@@ -209,19 +212,19 @@ module.exports = ({
     "editor.foreground": foreground,
 
     // TODO:
-    // "editor.findMatchBackground": alpha(ansi.blue, "60"),
+    // "editor.findMatchBackground": alphaB(ansi.blue, 0.4),
     // "editor.findMatchBorder": null,
     // "editor.findMatchHighlightBackground": "#314365",
     // "editor.findMatchHighlightBorder": null,
-    // "editor.findRangeHighlightBackground": alpha("#3a3d41", "66"),
+    // "editor.findRangeHighlightBackground": alphaB("#3a3d41", 0.4),
     // "editor.findRangeHighlightBorder": null,
     // "editor.focusedStackFrameHighlightBackground": alpha("#7abd7a", "4d"),
     // "editor.foldBackground": alpha("#677696", "1d"),
-    // "editor.hoverHighlightBackground": alpha("#264f78", "40"),
+    // "editor.hoverHighlightBackground": alphaB("#264f78", 0.2),
     // "editor.inactiveSelectionBackground": alpha("#677696", "30"),
-    // "editor.inlineValuesBackground": alpha("#ffc800", "33"),
-    // "editor.inlineValuesForeground": alpha(brightForeground, "80"),
-    "editor.lineHighlightBackground": alpha(ansi.black, "33"),
+    // "editor.inlineValuesBackground": alphaB("#ffc800", 0.2),
+    // "editor.inlineValuesForeground": alphaB(brightForeground, 0.5),
+    "editor.lineHighlightBackground": alphaB(ansi.black, 0.5),
     "editor.lineHighlightBorder": none,
     // "editor.linkedEditingBackground": alpha("#ff0000", "4d"),
     // "editor.rangeHighlightBackground": alpha(ansi.blue, "30"),
@@ -234,7 +237,7 @@ module.exports = ({
     // "editor.snippetFinalTabstopHighlightBorder": "#525252",
     // "editor.snippetTabstopHighlightBackground": alpha("#7c7c7c", "4d"),
     // "editor.snippetTabstopHighlightBorder": null,
-    // "editor.stackFrameHighlightBackground": alpha("#ffff00", "33"),
+    // "editor.stackFrameHighlightBackground": alphaB("#ffff00", 0.2),
     // "editor.symbolHighlightBackground": "#314365",
     // "editor.symbolHighlightBorder": null,
     // "editor.wordHighlightBackground": "#484e5b",
@@ -250,7 +253,7 @@ module.exports = ({
     // "editorBracketHighlight.foreground4": alpha("#000000", "00"),
     // "editorBracketHighlight.foreground5": alpha("#000000", "00"),
     // "editorBracketHighlight.foreground6": alpha("#000000", "00"),
-    // "editorBracketHighlight.unexpectedBracket.foreground": alpha("#ff1212", "cc"),
+    // "editorBracketHighlight.unexpectedBracket.foreground": alphaB("#ff1212", 0.8),
 
     // "editorBracketMatch.background": alpha(ansi.blue, "30"),
     // "editorBracketMatch.border": alpha(ansi.blue, "30"),
@@ -274,7 +277,7 @@ module.exports = ({
     // "editorCommentsWidget.rangeActiveBorder": alpha(foreground, "00"),
     // "editorCommentsWidget.rangeBackground": alpha(foreground, "00"),
     // "editorCommentsWidget.rangeBorder": alpha(foreground, "00"),
-    // "editorCommentsWidget.resolvedBorder": alpha("#cccccc", "80"),
+    // "editorCommentsWidget.resolvedBorder": alphaB("#cccccc", 0.5),
     // "editorCommentsWidget.unresolvedBorder": alpha(foreground, "00"),
 
     // "editorCursor.background": null,
@@ -288,8 +291,8 @@ module.exports = ({
     // "editorGhostText.border": null,
     // "editorGhostText.foreground": alpha(brightForeground, "56"),
 
-    "editorGroup.border": alpha(ansi.black, "33"),
-    "editorGroup.dropBackground": alpha(ansi.black, "33"),
+    "editorGroup.border": alphaB(ansi.black, 0.5),
+    "editorGroup.dropBackground": alphaB(ansi.black, 0.5),
     "editorGroup.dropIntoPromptBackground": boxBackground,
     "editorGroup.dropIntoPromptBorder": none,
     "editorGroup.dropIntoPromptForeground": boxForeground,
@@ -336,11 +339,11 @@ module.exports = ({
     // "editorInfo.border": null,
     "editorInfo.foreground": info,
 
-    // "editorInlayHint.background": alpha(ansi.black, "40"),
+    // "editorInlayHint.background": alphaB(ansi.black, 0.2),
     // "editorInlayHint.foreground": foreground,
-    // "editorInlayHint.parameterBackground": alpha(ansi.black, "40"),
+    // "editorInlayHint.parameterBackground": alphaB(ansi.black, 0.2),
     // "editorInlayHint.parameterForeground": foreground,
-    // "editorInlayHint.typeBackground": alpha(ansi.black, "40"),
+    // "editorInlayHint.typeBackground": alphaB(ansi.black, 0.2),
     // "editorInlayHint.typeForeground": foreground,
 
     // "editorLightBulb.foreground": "#ffcc00",
@@ -366,24 +369,24 @@ module.exports = ({
     // "editorOverviewRuler.bracketMatchForeground": "#a0a0a0",
     // "editorOverviewRuler.commentForeground": "#2c313a",
     // "editorOverviewRuler.commentUnresolvedForeground": "#2c313a",
-    // "editorOverviewRuler.commonContentForeground": alpha("#606060", "66"),
-    // "editorOverviewRuler.currentContentForeground": alpha("#40c8ae", "80"),
+    // "editorOverviewRuler.commonContentForeground": alphaB("#606060", 0.4),
+    // "editorOverviewRuler.currentContentForeground": alphaB("#40c8ae", 0.5),
     "editorOverviewRuler.deletedForeground": removed,
     "editorOverviewRuler.errorForeground": error,
     // "editorOverviewRuler.findMatchForeground": alpha("#d18616", "7e"),
-    // "editorOverviewRuler.incomingContentForeground": alpha(added, "80"),
+    // "editorOverviewRuler.incomingContentForeground": alphaB(added, 0.5),
     "editorOverviewRuler.infoForeground": info,
-    // "editorOverviewRuler.modifiedForeground": alpha(modified, "99"),
-    // "editorOverviewRuler.rangeHighlightForeground": alpha("#007acc", "99"),
-    // "editorOverviewRuler.selectionHighlightForeground": alpha("#a0a0a0", "cc"),
+    // "editorOverviewRuler.modifiedForeground": alphaB(modified, 0.6),
+    // "editorOverviewRuler.rangeHighlightForeground": alphaB("#007acc", 0.6),
+    // "editorOverviewRuler.selectionHighlightForeground": alphaB("#a0a0a0", 0.8),
     "editorOverviewRuler.warningForeground": warning,
-    // "editorOverviewRuler.wordHighlightForeground": alpha("#a0a0a0", "cc"),
-    // "editorOverviewRuler.wordHighlightStrongForeground": alpha("#c0a0c0", "cc"),
-    // "editorOverviewRuler.wordHighlightTextForeground": alpha("#a0a0a0", "cc"),
+    // "editorOverviewRuler.wordHighlightForeground": alphaB("#a0a0a0", 0.8),
+    // "editorOverviewRuler.wordHighlightStrongForeground": alphaB("#c0a0c0", 0.8),
+    // "editorOverviewRuler.wordHighlightTextForeground": alphaB("#a0a0a0", 0.8),
 
     // "editorPane.background": ansi.black,
 
-    "editorRuler.foreground": alpha(ansi.cyan, "33"),
+    "editorRuler.foreground": alphaB(ansi.cyan, 0.2),
 
     // "editorStickyScroll.background": ansi.black,
     // "editorStickyScrollHover.background": "#2a2d2e",
@@ -397,7 +400,7 @@ module.exports = ({
     // "editorSuggestWidget.selectedForeground": foreground,
     // "editorSuggestWidget.selectedIconForeground": null,
 
-    // "editorSuggestWidgetStatus.foreground": alpha(foreground, "80"),
+    // "editorSuggestWidgetStatus.foreground": alphaB(foreground, 0.5),
 
     // "editorUnicodeHighlight.background": alpha("#bd9b03", "26"),
     // "editorUnicodeHighlight.border": "#bd9b03",
@@ -427,14 +430,14 @@ module.exports = ({
     // "extensionButton.prominentBackground": ansi.blue,
     // "extensionButton.prominentForeground": foreground,
     // "extensionButton.prominentHoverBackground": ansi.blue,
-    // "extensionButton.separator": alpha(foreground, "66"),
+    // "extensionButton.separator": alphaB(foreground, 0.4),
 
     // "extensionIcon.preReleaseForeground": "#1d9271",
     // "extensionIcon.sponsorForeground": "#d758b3",
     // "extensionIcon.starForeground": "#ff8e00",
     // "extensionIcon.verifiedForeground": ansi.cyan,
 
-    focusBorder: alpha(ansi.cyan, "99"),
+    focusBorder: alphaB(ansi.cyan, 0.6),
 
     foreground,
 
@@ -444,8 +447,8 @@ module.exports = ({
     "gitDecoration.ignoredResourceForeground": ignored,
     "gitDecoration.modifiedResourceForeground": modified,
     // "gitDecoration.renamedResourceForeground": "#73c991",
-    "gitDecoration.stageDeletedResourceForeground": alpha(removed, "cc"),
-    "gitDecoration.stageModifiedResourceForeground": alpha(modified, "cc"),
+    "gitDecoration.stageDeletedResourceForeground": alphaB(removed, 0.8),
+    "gitDecoration.stageModifiedResourceForeground": alphaB(modified, 0.8),
     // "gitDecoration.submoduleResourceForeground": "#8db9e2",
     "gitDecoration.untrackedResourceForeground": untracked,
 
@@ -460,7 +463,7 @@ module.exports = ({
     // "gitlens.decorations.branchUpToDateForegroundColor": "#64727f",
     "gitlens.decorations.copiedForegroundColor": added,
     "gitlens.decorations.deletedForegroundColor": removed,
-    "gitlens.decorations.ignoredForegroundColor": alpha(foreground, "60"),
+    "gitlens.decorations.ignoredForegroundColor": alphaB(foreground, 0.4),
     "gitlens.decorations.modifiedForegroundColor": modified,
     // "gitlens.decorations.renamedForegroundColor": "#73c991",
     "gitlens.decorations.untrackedForegroundColor": untracked,
@@ -497,9 +500,9 @@ module.exports = ({
     // "gitlens.graphScrollMarkerUpstreamColor": "#09ae17",
     // "gitlens.gutterBackgroundColor": alpha(brightForeground, "13"),
     // "gitlens.gutterForegroundColor": "#bebebe",
-    // "gitlens.gutterUncommittedForegroundColor": alpha("#00bcf2", "99"),
-    // "gitlens.lineHighlightBackgroundColor": alpha("#00bcf2", "33"),
-    // "gitlens.lineHighlightOverviewRulerColor": alpha("#00bcf2", "99"),
+    // "gitlens.gutterUncommittedForegroundColor": alphaB("#00bcf2", 0.6),
+    // "gitlens.lineHighlightBackgroundColor": alphaB("#00bcf2", 0.2),
+    // "gitlens.lineHighlightOverviewRulerColor": alphaB("#00bcf2", 0.6),
     // "gitlens.mergedPullRequestIconColor": "#a371f7",
     // "gitlens.openAutolinkedIssueIconColor": "#3fb950",
     // "gitlens.openPullRequestIconColor": "#3fb950",
@@ -513,11 +516,11 @@ module.exports = ({
 
     // "inlineChat.background": background,
     // "inlineChat.border": "#454545",
-    // "inlineChat.regionHighlight": alpha("#264f78", "40"),
+    // "inlineChat.regionHighlight": alphaB("#264f78", 0.2),
     // "inlineChat.shadow": "#282c35",
 
-    "inlineChatDiff.inserted": alpha(added, "40"),
-    "inlineChatDiff.removed": alpha(removed, "40"),
+    "inlineChatDiff.inserted": alpha(added, 0.2),
+    "inlineChatDiff.removed": alpha(removed, 0.2),
 
     // "inlineChatInput.background": "#1d1f23",
     // "inlineChatInput.border": "#454545",
@@ -530,18 +533,18 @@ module.exports = ({
     // "input.foreground": foreground,
     // "input.placeholderForeground": foreground,
 
-    // "inputOption.activeBackground": alpha(foreground, "00"),
+    // "inputOption.activeBackground": foreground,
     // "inputOption.activeBorder": ansi.blue,
     // "inputOption.activeForeground": brightForeground,
-    // "inputOption.hoverBackground": alpha("#5a5d5e", "80"),
+    // "inputOption.hoverBackground": alpha("#5a5d5e", 0.5),
 
-    // "inputValidation.errorBackground": alpha(error, "33"),
+    // "inputValidation.errorBackground": alpha(error, 0.2),
     // "inputValidation.errorBorder": error,
     // "inputValidation.errorForeground": null,
-    // "inputValidation.infoBackground": alpha(info, "33"),
+    // "inputValidation.infoBackground": alpha(info, 0.2),
     // "inputValidation.infoBorder": info,
     // "inputValidation.infoForeground": null,
-    // "inputValidation.warningBackground": alpha(warning, "33"),
+    // "inputValidation.warningBackground": alpha(warning, 0.2),
     // "inputValidation.warningBorder": warning,
     // "inputValidation.warningForeground": null,
 
@@ -553,8 +556,8 @@ module.exports = ({
     // "issues.open": "#3fb950",
 
     // "keybindingLabel.background": alpha("#808080", "2b"),
-    // "keybindingLabel.border": alpha("#333333", "99"),
-    // "keybindingLabel.bottomBorder": alpha("#444444", "99"),
+    // "keybindingLabel.border": alphaB("#333333", 0.6),
+    // "keybindingLabel.bottomBorder": alphaB("#444444", 0.6),
     // "keybindingLabel.foreground": "#cccccc",
 
     // "keybindingTable.headerBackground": alpha(foreground, "0a"),
@@ -570,16 +573,16 @@ module.exports = ({
     // "list.filterMatchBackground": "#314365",
     // "list.filterMatchBorder": null,
     // "list.focusAndSelectionOutline": null,
-    "list.focusBackground": alpha(ansi.black, "99"),
+    "list.focusBackground": alphaB(ansi.black, 0.6),
     "list.focusForeground": foreground,
     // "list.focusHighlightForeground": "#c5c5c5",
     "list.focusOutline": none,
     // "list.highlightForeground": "#c5c5c5",
-    "list.hoverBackground": alpha(ansi.black, "66"),
+    "list.hoverBackground": alphaB(ansi.black, 0.4),
     "list.hoverForeground": foreground,
-    "list.inactiveFocusBackground": alpha(ansi.black, "66"),
+    "list.inactiveFocusBackground": alphaB(ansi.black, 0.4),
     "list.inactiveFocusOutline": none,
-    "list.inactiveSelectionBackground": alpha(ansi.black, "99"),
+    "list.inactiveSelectionBackground": alphaB(ansi.black, 0.6),
     "list.inactiveSelectionForeground": foreground,
     "list.inactiveSelectionIconForeground": none,
     "list.invalidItemForeground": error,
@@ -591,9 +594,9 @@ module.exports = ({
     // "listFilterWidget.shadow": "#282c35",
 
     // "markdown.extension.editor.codeSpan.background": alpha("#000000", "00"),
-    // "markdown.extension.editor.codeSpan.border": alpha("#677696", "60"),
+    // "markdown.extension.editor.codeSpan.border": alphaB("#677696", 0.4),
     // "markdown.extension.editor.formattingMark.foreground": "#3b4048",
-    // "markdown.extension.editor.trailingSpace.background": alpha("#cccccc", "33"),
+    // "markdown.extension.editor.trailingSpace.background": alphaB("#cccccc", 0.2),
 
     // TODO:
     // "menu.background": "#1d1f23",
@@ -610,21 +613,21 @@ module.exports = ({
 
     // "merge.border": null,
     // "merge.commonContentBackground": alpha("#606060", "29"),
-    // "merge.commonHeaderBackground": alpha("#606060", "66"),
-    // "merge.currentContentBackground": alpha("#40c8ae", "33"),
-    // "merge.currentHeaderBackground": alpha("#40c8ae", "80"),
-    // "merge.incomingContentBackground": alpha("#40a6ff", "33"),
-    // "merge.incomingHeaderBackground": alpha("#40a6ff", "80"),
+    // "merge.commonHeaderBackground": alphaB("#606060", 0.4),
+    // "merge.currentContentBackground": alphaB("#40c8ae", 0.2),
+    // "merge.currentHeaderBackground": alphaB("#40c8ae", 0.5),
+    // "merge.incomingContentBackground": alphaB("#40a6ff", 0.2),
+    // "merge.incomingHeaderBackground": alphaB("#40a6ff", 0.5),
 
-    // "mergeEditor.change.background": alpha("#9bb955", "33"),
-    // "mergeEditor.change.word.background": alpha("#9ccc2c", "33"),
+    // "mergeEditor.change.background": alphaB("#9bb955", 0.2),
+    // "mergeEditor.change.word.background": alphaB("#9ccc2c", 0.2),
     // "mergeEditor.changeBase.background": "#4b1818",
     // "mergeEditor.changeBase.word.background": "#6f1313",
     // "mergeEditor.conflict.handled.minimapOverViewRuler": alpha("#adaca8", "ee"),
-    // "mergeEditor.conflict.handledFocused.border": alpha("#c1c1c1", "cc"),
+    // "mergeEditor.conflict.handledFocused.border": alphaB("#c1c1c1", 0.8),
     // "mergeEditor.conflict.handledUnfocused.border": alpha("#868686", "49"),
-    // "mergeEditor.conflict.input1.background": alpha("#40c8ae", "33"),
-    // "mergeEditor.conflict.input2.background": alpha("#40a6ff", "33"),
+    // "mergeEditor.conflict.input1.background": alphaB("#40c8ae", 0.2),
+    // "mergeEditor.conflict.input2.background": alphaB("#40a6ff", 0.2),
     // "mergeEditor.conflict.unhandled.minimapOverViewRuler": "#fcba03",
     // "mergeEditor.conflict.unhandledFocused.border": "#ffa600",
     // "mergeEditor.conflict.unhandledUnfocused.border": alpha("#ffa600", "7a"),
@@ -641,9 +644,9 @@ module.exports = ({
     // "minimapGutter.addedBackground": added,
     // "minimapGutter.deletedBackground": ansi.magenta,
     // "minimapGutter.modifiedBackground": ansi.blue,
-    // "minimapSlider.activeBackground": alpha("#747d91", "40"),
-    // "minimapSlider.background": alpha("#4e5666", "40"),
-    // "minimapSlider.hoverBackground": alpha("#5a6375", "40"),
+    // "minimapSlider.activeBackground": alphaB("#747d91", 0.2),
+    // "minimapSlider.background": alphaB("#4e5666", 0.2),
+    // "minimapSlider.hoverBackground": alphaB("#5a6375", 0.2),
 
     // "notebook.cellBorderColor": "#2c313a",
     // "notebook.cellEditorBackground": background,
@@ -665,9 +668,9 @@ module.exports = ({
 
     // "notebookEditorOverviewRuler.runningCellForeground": "#89d185",
 
-    // "notebookScrollbarSlider.activeBackground": alpha("#747d91", "80"),
-    // "notebookScrollbarSlider.background": alpha("#4e5666", "80"),
-    // "notebookScrollbarSlider.hoverBackground": alpha("#5a6375", "80"),
+    // "notebookScrollbarSlider.activeBackground": alphaB("#747d91", 0.5),
+    // "notebookScrollbarSlider.background": alphaB("#4e5666", 0.5),
+    // "notebookScrollbarSlider.hoverBackground": alphaB("#5a6375", 0.5),
 
     // "notebookStatusErrorIcon.foreground": ansi.red,
     // "notebookStatusRunningIcon.foreground": foreground,
@@ -697,9 +700,9 @@ module.exports = ({
     // "panelInput.border": alpha(foreground, "10"),
 
     // "panelSection.border": ansi.brightBlack,
-    // "panelSection.dropBackground": alpha("#53595d", "80"),
+    // "panelSection.dropBackground": alphaB("#53595d", 0.5),
 
-    // "panelSectionHeader.background": alpha("#808080", "33"),
+    // "panelSectionHeader.background": alphaB("#808080", 0.2),
     // "panelSectionHeader.border": null,
     // "panelSectionHeader.foreground": null,
 
@@ -720,7 +723,7 @@ module.exports = ({
     // "peekViewResult.fileForeground": brightForeground,
     // "peekViewResult.lineForeground": "#bbbbbb",
     // "peekViewResult.matchHighlightBackground": alpha("#ea5c00", "4d"),
-    // "peekViewResult.selectionBackground": alpha("#3399ff", "33"),
+    // "peekViewResult.selectionBackground": alphaB("#3399ff", 0.2),
     // "peekViewResult.selectionForeground": brightForeground,
 
     // "peekViewTitle.background": "#252526",
@@ -762,9 +765,9 @@ module.exports = ({
 
     // "scrollbar.shadow": "#282c35",
 
-    // "scrollbarSlider.activeBackground": alpha("#747d91", "80"),
-    // "scrollbarSlider.background": alpha("#4e5666", "80"),
-    // "scrollbarSlider.hoverBackground": alpha("#5a6375", "80"),
+    // "scrollbarSlider.activeBackground": alphaB("#747d91", 0.5),
+    // "scrollbarSlider.background": alphaB("#4e5666", 0.5),
+    // "scrollbarSlider.hoverBackground": alphaB("#5a6375", 0.5),
 
     // "search.resultsInfoForeground": alpha(info, "a6"),
 
@@ -781,7 +784,7 @@ module.exports = ({
     // "settings.dropdownBorder": "#181a1f",
     // "settings.dropdownForeground": foreground,
     // "settings.dropdownListBorder": "#454545",
-    // "settings.focusedRowBackground": alpha("#292d35", "99"),
+    // "settings.focusedRowBackground": alphaB("#292d35", 0.6),
     // "settings.focusedRowBorder": alpha(foreground, "00"),
     // "settings.headerBorder": ansi.brightBlack,
     // "settings.headerForeground": ansi.cyan,
@@ -798,8 +801,8 @@ module.exports = ({
 
     "sideBar.background": background,
     // "sideBar.border": "#232830",
-    // "sideBar.dropBackground": alpha("#53595d", "80"),
-    "sideBar.foreground": alpha(brightForeground, "99"),
+    // "sideBar.dropBackground": alphaB("#53595d", 0.5),
+    "sideBar.foreground": alphaB(brightForeground, 0.6),
 
     "sideBarSectionHeader.background": background,
     // "sideBarSectionHeader.border": null,
@@ -827,12 +830,12 @@ module.exports = ({
     // "statusBar.offlineBackground": "#6c1717",
     // "statusBar.offlineForeground": "#f8fafd",
 
-    "statusBarItem.activeBackground": alpha(brightForeground, "ff"),
+    "statusBarItem.activeBackground": brightForeground,
     // "statusBarItem.focusBorder": "#9da5b4",
     "statusBarItem.hoverBackground": ansi.darkBlack,
-    // "statusBarItem.compactHoverBackground": alpha(brightForeground, "33"),
+    // "statusBarItem.compactHoverBackground": alphaB(brightForeground, 0.2),
     // - prominent (?):
-    // "statusBarItem.prominentBackground": alpha("#000000", "80"),
+    // "statusBarItem.prominentBackground": alphaB("#000000", 0.5),
     // "statusBarItem.prominentForeground": "#9da5b4",
     // "statusBarItem.prominentHoverBackground": alpha("#000000", "4d"),
     // - remote (?):
@@ -879,29 +882,29 @@ module.exports = ({
     // "symbolIcon.variableForeground": "#75beff",
 
     "tab.activeBackground": ansi.darkBlack,
-    // "tab.activeBorder": alpha(ansi.blue, "60"),
+    // "tab.activeBorder": alphaB(ansi.blue, 0.4),
     // "tab.activeBorderTop": null,
     "tab.activeForeground": foreground,
     // "tab.activeModifiedBorder": "#3399cc",
-    "tab.border": alpha(ansi.blue, "66"),
-    "tab.hoverBackground": alpha(ansi.blue, "30"),
+    "tab.border": alphaB(ansi.blue, 0.4),
+    "tab.hoverBackground": alphaB(ansi.blue, 0.5),
     // "tab.hoverBorder": null,
-    "tab.hoverForeground": alpha(brightForeground, "80"),
+    "tab.hoverForeground": alphaB(brightForeground, 0.5),
     "tab.inactiveBackground": background,
-    "tab.inactiveForeground": ansi.brightBlack,
-    // "tab.inactiveModifiedBorder": alpha("#3399cc", "80"),
+    "tab.inactiveForeground": ansi.brightBlack, // alphaB(foreground, 0.75),
+    // "tab.inactiveModifiedBorder": alphaB("#3399cc", 0.5),
     // "tab.lastPinnedBorder": "#585858",
     // "tab.unfocusedActiveBackground": "#2c313a",
     // "tab.unfocusedActiveBorder": ansi.brightBlack,
     // "tab.unfocusedActiveBorderTop": null,
     // "tab.unfocusedActiveForeground": alpha(ansi.cyan, "30"),
-    // "tab.unfocusedActiveModifiedBorder": alpha("#3399cc", "80"),
+    // "tab.unfocusedActiveModifiedBorder": alphaB("#3399cc", 0.5),
     // "tab.unfocusedHoverBackground": alpha(ansi.blue, "18"),
     // "tab.unfocusedHoverBorder": null,
     // "tab.unfocusedHoverForeground": null,
     // "tab.unfocusedInactiveBackground": background,
-    // "tab.unfocusedInactiveForeground": alpha(foreground, "80"),
-    // "tab.unfocusedInactiveModifiedBorder": alpha("#3399cc", "40"),
+    // "tab.unfocusedInactiveForeground": alphaB(foreground, 0.5),
+    // "tab.unfocusedInactiveModifiedBorder": alphaB("#3399cc", 0.2),
 
     "terminal.ansiBlack": ansi.black,
     "terminal.ansiBlue": ansi.blue,
@@ -921,8 +924,8 @@ module.exports = ({
     "terminal.ansiBrightYellow": ansi.brightYellow,
     "terminal.background": background,
     // "terminal.border": ansi.brightBlack,
-    // "terminal.dropBackground": alpha("#53595d", "80"),
-    // "terminal.findMatchBackground": alpha(ansi.blue, "60"),
+    // "terminal.dropBackground": alphaB("#53595d", 0.5),
+    // "terminal.findMatchBackground": alphaB(ansi.blue, 0.4),
     // "terminal.findMatchBorder": null,
     // "terminal.findMatchHighlightBackground": "#314365",
     // "terminal.findMatchHighlightBorder": null,
@@ -931,16 +934,16 @@ module.exports = ({
     // "terminal.inactiveSelectionBackground": alpha("#677696", "30"),
     "terminal.selectionBackground": selectionBackground,
     "terminal.selectionForeground": selectionForeground,
-    // "terminal.tab.activeBorder": alpha(ansi.blue, "60"),
+    // "terminal.tab.activeBorder": alphaB(ansi.blue, 0.4),
 
-    // "terminalCommandDecoration.defaultBackground": alpha(brightForeground, "40"),
+    // "terminalCommandDecoration.defaultBackground": alphaB(brightForeground, 0.2),
     // "terminalCommandDecoration.errorBackground": "#f14c4c",
     // "terminalCommandDecoration.successBackground": "#1b81a8",
 
     // "terminalCursor.background": null,
     // "terminalCursor.foreground": null,
 
-    // "terminalOverviewRuler.cursorForeground": alpha("#a0a0a0", "cc"),
+    // "terminalOverviewRuler.cursorForeground": alphaB("#a0a0a0", 0.8),
     // "terminalOverviewRuler.findMatchForeground": alpha("#d18616", "7e"),
 
     // "testing.iconErrored": error,
@@ -950,17 +953,17 @@ module.exports = ({
     // "testing.iconSkipped": disabled,
     // "testing.iconUnset": disabled,
     // "testing.message.error.decorationForeground": error,
-    // "testing.message.error.lineBackground": alpha(error, "33"),
-    // "testing.message.info.decorationForeground": alpha(info, "80"),
+    // "testing.message.error.lineBackground": alphaB(error, 0.2),
+    // "testing.message.info.decorationForeground": alphaB(info, 0.5),
     // "testing.message.info.lineBackground": null,
     // "testing.peekBorder": ansi.magenta,
     // "testing.peekHeaderBackground": alpha(ansi.magenta, "1a"),
     // "testing.runAction": "#73c991",
 
     // "textBlockQuote.background": alpha("#7f7f7f", "1a"),
-    // "textBlockQuote.border": alpha("#007acc", "80"),
+    // "textBlockQuote.border": alphaB("#007acc", 0.5),
 
-    // "textCodeBlock.background": alpha("#0a0a0a", "66"),
+    // "textCodeBlock.background": alphaB("#0a0a0a", 0.4),
 
     "textLink.activeForeground": ansi.brightCyan,
     "textLink.foreground": ansi.cyan,
@@ -974,22 +977,24 @@ module.exports = ({
       .hex(),
     "titleBar.activeForeground": ansi.brightGreen,
     "titleBar.border": none,
-    // "titleBar.inactiveBackground": alpha(ansi.black, "80"),
+    // "titleBar.inactiveBackground": alphaB(ansi.black, 0.5),
     // "titleBar.inactiveForeground": "#6b717d",
 
-    "toolbar.activeBackground": alpha(ansi.red, "66"),
-    "toolbar.hoverBackground": alpha(ansi.red, "33"),
+    "toolbar.activeBackground": alphaB(ansi.red, 0.4),
+    "toolbar.hoverBackground": alphaB(ansi.red, 0.2),
     "toolbar.hoverOutline": none,
 
-    // "tree.inactiveIndentGuidesStroke": alpha("#585858", "66"),
+    // "tree.inactiveIndentGuidesStroke": alphaB("#585858", 0.4),
     // "tree.indentGuidesStroke": "#585858",
     // "tree.tableColumnsBorder": alpha("#cccccc", "20"),
     // "tree.tableOddRowsBackground": alpha(foreground, "0a"),
 
-    // "walkThrough.embeddedEditorBackground": alpha("#000000", "66"),
+    // "walkThrough.embeddedEditorBackground": alphaB("#000000", 0.4),
     // "walkthrough.stepTitle.foreground": brightForeground,
 
-    "welcomePage.background": alpha(ansi.black, "33"),
+    "welcomePage.background": chroma
+      .mix(background, ansi.black, 0.125, "lch")
+      .hex(),
     "welcomePage.progress.background": ansi.black,
     "welcomePage.progress.foreground": ansi.cyan,
     // TODO: apply box styles
