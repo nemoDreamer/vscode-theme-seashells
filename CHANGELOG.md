@@ -1,3 +1,9 @@
+## [0.5.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.1...v0.5.2) (2023-08-28)
+
+### Bug Fixes
+
+- **dark:** use mac native color meter for background, adjust variations ([ac5494b](https://github.com/nemoDreamer/vscode-theme-seashells/commit/ac5494b0ee3060e4ff944f190919f043cc23841a))
+
 ## [0.5.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.0...v0.5.1) (2023-08-28)
 
 ### Bug Fixes
