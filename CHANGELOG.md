@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.0...v0.5.1) (2023-08-28)
+
+### Bug Fixes
+
+- **dark:** fix status bar for no folder / debugging ([2663d27](https://github.com/nemoDreamer/vscode-theme-seashells/commit/2663d27898ce142bb490acd0e2d89118d080894b))
+
 # [0.5.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.1...v0.5.0) (2023-08-28)
 
 ### Features
