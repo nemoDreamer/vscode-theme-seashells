@@ -25,7 +25,8 @@ module.exports = {
     },
 
     background: "#09141b",
-    foreground: "#deb88d",
+    foreground: "#deb88d", // <- same as `ansi.white`, ...
+    brightForeground: "#fee4ce", // <- ...so taken from `ansi.brightWhite`
 
     bold: "#ffe4cc",
     links: "#005cbb", // <- iTerm only

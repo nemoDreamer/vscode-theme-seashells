@@ -4,11 +4,14 @@ const { alpha } = require("./utils");
 TODO:
 - [x] less yellow, more white
 - [x] better strings
+- [x] use `foreground` for `ansi.white`
+- [x] use `brightForeground` for `ansi.brightWhite`
 */
 
 module.exports = ({
   ansi,
   foreground,
+  brightForeground,
   // background,
 }) => [
   { scope: "string", settings: { foreground } },
@@ -59,7 +62,7 @@ module.exports = ({
   {
     scope:
       "keyword.control.import, keyword.control.from, keyword.control.export, keyword.control.default",
-    settings: { foreground: ansi.brightWhite, fontStyle: "italic" },
+    settings: { foreground: brightForeground, fontStyle: "italic" },
   },
   {
     scope: "keyword.control.flow",
@@ -71,7 +74,7 @@ module.exports = ({
   },
   {
     scope: "new.expr entity.name.function",
-    settings: { foreground: ansi.brightWhite, fontStyle: "bold" },
+    settings: { foreground: brightForeground, fontStyle: "bold" },
   },
   {
     scope: "storage.type, storage.modifier",
@@ -84,7 +87,7 @@ module.exports = ({
   { scope: "support.type", settings: { foreground: ansi.magenta } },
   {
     scope: "entity.name.type, entity.other.inherited-class",
-    settings: { foreground: ansi.brightWhite /* ansi.magenta */ },
+    settings: { foreground: brightForeground /* ansi.magenta */ },
   },
   {
     scope: "comment",
@@ -146,11 +149,11 @@ module.exports = ({
   },
   {
     scope: "markup.bold",
-    settings: { foreground: ansi.brightWhite, fontStyle: "bold" },
+    settings: { foreground: brightForeground, fontStyle: "bold" },
   },
   {
     scope: "markup.bold markup.italic, markup.italic markup.bold",
-    settings: { foreground: ansi.brightWhite },
+    settings: { foreground: brightForeground },
   },
   { scope: "keyword.other.definition.ini", settings: { foreground } },
   {
