@@ -1,7 +1,3 @@
-// From https://github.com/lysyi3m/macos-terminal-themes/blob/master/schemes/SeaShells.terminal via https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/xrdb/SeaShells.xrdb
-
-// const chroma = require("chroma-js");
-
 const { processColors, invertLuminance } = require("../functions/utils");
 
 const dark = require("./seashells-dark");

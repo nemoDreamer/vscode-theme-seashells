@@ -2,7 +2,7 @@
 
 const seashellsDark = require("../../schemes/seashells-dark");
 const {
-  assignVariations,
+  addVariations,
   processColors,
   invert,
   invertLuminance,
@@ -11,23 +11,21 @@ const {
 } = require("../utils");
 
 describe("utils", () => {
-  test("assignVariations", () => {
-    const scheme = {
-      background: "#111111",
-      foreground: "#cccccc",
-      brightForeground: "white",
-      ansi: {
-        red: "#ff0000",
-        darkRed: "darkred",
-        yellow: "#ffe000",
-        blue: "#0000cc",
-        brightBlue: "brightblue",
-      },
-    };
-
-    assignVariations(scheme);
-
-    expect(scheme).toMatchInlineSnapshot(`
+  test("addVariations", () => {
+    expect(
+      addVariations({
+        background: "#111111",
+        foreground: "#cccccc",
+        brightForeground: "white",
+        ansi: {
+          red: "#ff0000",
+          darkRed: "darkred",
+          yellow: "#ffe000",
+          blue: "#0000cc",
+          brightBlue: "brightblue",
+        },
+      })
+    ).toMatchInlineSnapshot(`
       {
         "ansi": {
           "blue": "#0000cc",
@@ -85,6 +83,14 @@ describe("utils", () => {
             "brightWhite": "#001a2a",
             "brightYellow": "#00274d",
             "cyan": "#7d4b3d",
+            "darkBlack": "#eed7bd",
+            "darkBlue": "#ecc8c0",
+            "darkCyan": "#c08c7c",
+            "darkGreen": "#caa684",
+            "darkMagenta": "#a87059",
+            "darkRed": "#00c5f8",
+            "darkWhite": "#4f8ab1",
+            "darkYellow": "#009ae3",
             "green": "#a47052",
             "magenta": "#55210e",
             "red": "#008bc9",
@@ -92,9 +98,40 @@ describe("utils", () => {
             "yellow": "#0050a9",
           },
           "background": "#f3e6d7",
+          "bg": {
+            "black": "#d5bda4",
+            "blue": "#cca7a0",
+            "brightBlack": "#aea69d",
+            "brightBlue": "#73321c",
+            "brightCyan": "#60453f",
+            "brightGreen": "#816157",
+            "brightMagenta": "#311a13",
+            "brightRed": "#006275",
+            "brightWhite": "#001a2a",
+            "brightYellow": "#00274d",
+            "cyan": "#7d4b3d",
+            "green": "#a47052",
+            "magenta": "#55210e",
+            "red": "#008bc9",
+            "white": "#003c5f",
+            "yellow": "#0050a9",
+          },
           "bold": "#001a2b",
+          "brightBackground": "#efe3d3",
+          "brightBold": "#00000c",
+          "brightCursorText": "#00398c",
           "brightForeground": "#001a2a",
+          "brightLinks": "#828609",
+          "brightSelectedText": "#00000a",
+          "brightSelection": "#b89c80",
           "cursorText": "#0050a9",
+          "darkBackground": "#fdefe1",
+          "darkBold": "#527286",
+          "darkCursorText": "#009ae3",
+          "darkForeground": "#4f8ab1",
+          "darkLinks": "#aebf52",
+          "darkSelectedText": "#547284",
+          "darkSelection": "#e4caab",
           "foreground": "#003c5f",
           "links": "#939622",
           "selectedText": "#001a2a",

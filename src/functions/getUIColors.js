@@ -27,6 +27,7 @@ TODO:
 
 module.exports = ({
   ansi,
+  bg,
   foreground,
   darkForeground,
   brightForeground,
@@ -881,7 +882,7 @@ module.exports = ({
     // "symbolIcon.unitForeground": foreground,
     // "symbolIcon.variableForeground": "#75beff",
 
-    "tab.activeBackground": ansi.darkBlack,
+    "tab.activeBackground": bg.darkBlack,
     // "tab.activeBorder": alphaB(ansi.blue, 0.4),
     // "tab.activeBorderTop": null,
     "tab.activeForeground": foreground,

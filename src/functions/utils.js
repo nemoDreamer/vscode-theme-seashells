@@ -58,30 +58,38 @@ const darken = (hexColor) =>
     // .desaturate(1) // <- nudge
     .hex();
 
-const assignVariations = (obj) => {
-  Object.entries(obj)
-    .filter(([key]) => !/^(bright|dark)/.test(key))
-    .forEach(([key, value]) => {
-      if (typeof value === "string") {
-        const titleCasedName =
-          key.substring(0, 1).toUpperCase() + key.substring(1);
-        const brightName = `bright${titleCasedName}`;
-        const darkName = `dark${titleCasedName}`;
+// --------------------------------------------------
+// Scheme helpers
+// --------------------------------------------------
 
-        /* eslint-disable no-param-reassign */
-        // brighten?
-        if (!obj[brightName]) {
-          obj[brightName] = lighten(value);
-        }
-        // darken?
-        if (!obj[darkName]) {
-          obj[darkName] = darken(value);
-        }
-      } else {
-        assignVariations(value);
+const addVariations = (obj) =>
+  Object.entries(obj).reduce((prev, [key, value]) => {
+    if (typeof value === "string") {
+      if (/^(bright|dark)/.test(key)) {
+        return {
+          ...prev,
+          [key]: value,
+        };
       }
-    });
-};
+
+      const titleCasedName =
+        key.substring(0, 1).toUpperCase() + key.substring(1);
+      const brightName = `bright${titleCasedName}`;
+      const darkName = `dark${titleCasedName}`;
+
+      return {
+        ...prev,
+        [key]: value,
+        [brightName]: obj[brightName] || lighten(value),
+        [darkName]: obj[darkName] || darken(value),
+      };
+    }
+
+    return {
+      ...prev,
+      [key]: addVariations(value),
+    };
+  }, {});
 
 /**
  * @param {String|Object} scheme
@@ -101,6 +109,17 @@ const processColors = (scheme, callback) => {
   );
 };
 
+const prepareScheme = (scheme) => {
+  const withVariations = addVariations(scheme);
+
+  return {
+    ...withVariations,
+    // NOTE: store a separate copy of ANSI. (This will get processed, leaving the
+    // originals untouched if needed)
+    bg: withVariations.ansi,
+  };
+};
+
 module.exports = {
   alpha,
   makeAlphaB,
@@ -109,6 +128,8 @@ module.exports = {
   invertLuminance,
   lighten,
   darken,
-  assignVariations,
+  // ---
+  addVariations,
   processColors,
+  prepareScheme,
 };
