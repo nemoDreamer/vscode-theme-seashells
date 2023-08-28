@@ -7,10 +7,11 @@ const yargs = require("yargs");
 
 const makeColorTheme = require("./functions/makeColorTheme");
 
-const darkScheme = require("./schemes/seashells-dark");
+const seashellsLight = require("./schemes/seashells-light");
+const seashellsDark = require("./schemes/seashells-dark");
 
 // Schemes
-const schemes = [darkScheme];
+const schemes = [seashellsLight, seashellsDark];
 
 // ---
 

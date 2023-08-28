@@ -25,6 +25,11 @@
   "contributes": {
     "themes": [
       {
+        "label": "SeaShells (Light)",
+        "uiTheme": "vs",
+        "path": "./themes/seashells-light-color-theme.json"
+      },
+      {
         "label": "SeaShells (Dark)",
         "uiTheme": "vs-dark",
         "path": "./themes/seashells-dark-color-theme.json"
