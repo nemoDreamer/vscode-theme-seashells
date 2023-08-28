@@ -24,7 +24,7 @@ module.exports = {
       brightWhite: "#fee4ce",
     },
 
-    background: "#09141b",
+    background: "#0c1923", // <- native. original: "#09141b"
     foreground: "#deb88d", // <- same as `ansi.white`, ...
     brightForeground: "#fee4ce", // <- ...so taken from `ansi.brightWhite`
 

@@ -1,9 +1,13 @@
+// const chroma = require("chroma-js");
+
 const seashellsDark = require("../../schemes/seashells-dark");
 const {
   assignVariations,
   processColors,
   invert,
   invertLuminance,
+  darken,
+  lighten,
 } = require("../utils");
 
 describe("utils", () => {
@@ -28,19 +32,19 @@ describe("utils", () => {
         "ansi": {
           "blue": "#0000cc",
           "brightBlue": "brightblue",
-          "brightRed": "#ff754c",
-          "brightYellow": "#ffffa4",
-          "darkBlue": "#261191",
+          "brightRed": "#ff371c",
+          "brightYellow": "#ffff47",
+          "darkBlue": "#0000af",
           "darkRed": "darkred",
-          "darkYellow": "#776a31",
+          "darkYellow": "#8e7d00",
           "red": "#ff0000",
           "yellow": "#ffe000",
         },
         "background": "#111111",
-        "brightBackground": "#171717",
+        "brightBackground": "#131313",
         "brightForeground": "white",
-        "darkBackground": "#090909",
-        "darkForeground": "#616161",
+        "darkBackground": "#0b0b0b",
+        "darkForeground": "#727272",
         "foreground": "#cccccc",
       }
     `);
@@ -87,7 +91,7 @@ describe("utils", () => {
             "white": "#003c5f",
             "yellow": "#0050a9",
           },
-          "background": "#f7ede3",
+          "background": "#f3e6d7",
           "bold": "#001a2b",
           "brightForeground": "#001a2a",
           "cursorText": "#0050a9",
@@ -107,4 +111,21 @@ describe("utils", () => {
   test("invertLuminance", () => {
     expect(invertLuminance("#f00")).toBe("#e90000");
   });
+
+  test("lighten", () => {
+    expect(lighten("#e0c5a3")).toMatchInlineSnapshot(`"#ffe9c5"`);
+  });
+
+  test("darken", () => {
+    expect(darken("#e0c5a3")).toMatchInlineSnapshot(`"#836c4e"`);
+  });
+
+  // test.skip("true seashells theme deltas", () => {
+  //   const muted = chroma("#747063").get("lch.l");
+  //   const normal = chroma("#E0C5A3").get("lch.l");
+  //   const bright = chroma("#FBEADA").get("lch.l");
+
+  //   expect(muted / normal).toMatchInlineSnapshot(`0.5833759597037464`);
+  //   expect(bright / normal).toMatchInlineSnapshot(`1.1563045694783756`);
+  // });
 });

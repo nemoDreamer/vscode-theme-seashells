@@ -819,13 +819,13 @@ module.exports = ({
     "statusBar.border": none,
     // "statusBar.focusBorder": "#9da5b4",
     // - debugging:
-    "statusBar.debuggingBackground": ansi.magenta,
-    // "statusBar.debuggingForeground": brightForeground,
-    // "statusBar.debuggingBorder": ansi.magenta,
-    // - no folder (?):
-    // "statusBar.noFolderBackground": background,
-    // "statusBar.noFolderBorder": ansi.brightBlack,
-    // "statusBar.noFolderForeground": "#9da5b4",
+    "statusBar.debuggingBackground": ansi.cyan,
+    "statusBar.debuggingForeground": ansi.brightWhite,
+    "statusBar.debuggingBorder": none,
+    // - no folder:
+    "statusBar.noFolderBackground": alphaB(ansi.magenta, 0.25),
+    "statusBar.noFolderForeground": ansi.magenta,
+    "statusBar.noFolderBorder": none,
     // - offline:
     // "statusBar.offlineBackground": "#6c1717",
     // "statusBar.offlineForeground": "#f8fafd",

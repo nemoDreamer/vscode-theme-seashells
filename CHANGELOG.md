@@ -1,3 +1,21 @@
+## [0.5.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.1...v0.5.2) (2023-08-28)
+
+### Bug Fixes
+
+- **dark:** use mac native color meter for background, adjust variations ([ac5494b](https://github.com/nemoDreamer/vscode-theme-seashells/commit/ac5494b0ee3060e4ff944f190919f043cc23841a))
+
+## [0.5.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.0...v0.5.1) (2023-08-28)
+
+### Bug Fixes
+
+- **dark:** fix status bar for no folder / debugging ([2663d27](https://github.com/nemoDreamer/vscode-theme-seashells/commit/2663d27898ce142bb490acd0e2d89118d080894b))
+
+# [0.5.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.1...v0.5.0) (2023-08-28)
+
+### Features
+
+- **dark:** bake alpha in preparation for Light theme ([34590f0](https://github.com/nemoDreamer/vscode-theme-seashells/commit/34590f0e99d785e9d4b6956be2e335834987d6eb))
+
 ## [0.4.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.4.0...v0.4.1) (2023-08-27)
 
 ### Bug Fixes

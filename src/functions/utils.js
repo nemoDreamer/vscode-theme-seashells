@@ -48,14 +48,14 @@ const invertLuminance = (hexColor) => {
 
 const lighten = (hexColor) =>
   chroma(hexColor)
-    .set("lab.l", "*1.5")
-    // .saturate(1)
+    .set("lab.l", "*1.1563045694783756")
+    // .saturate(1) // <- nudge
     .hex();
 
 const darken = (hexColor) =>
   chroma(hexColor)
-    .set("lab.l", "*0.5")
-    .desaturate(1) // <- nudge
+    .set("lab.l", "*0.5833759597037464")
+    // .desaturate(1) // <- nudge
     .hex();
 
 const assignVariations = (obj) => {
@@ -107,6 +107,8 @@ module.exports = {
   alphaC,
   invert,
   invertLuminance,
+  lighten,
+  darken,
   assignVariations,
   processColors,
 };
