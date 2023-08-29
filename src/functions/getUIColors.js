@@ -86,9 +86,9 @@ module.exports = ({
     "badge.background": ansi.red,
     "badge.foreground": ansi.brightWhite,
 
-    // "banner.background": "#2c313a",
-    // "banner.foreground": foreground,
-    // "banner.iconForeground": info,
+    "banner.background": bg.darkYellow,
+    "banner.foreground": foreground,
+    "banner.iconForeground": info,
 
     // "breadcrumb.activeSelectionForeground": "#828aa0",
     // "breadcrumb.background": bg.black,
@@ -225,7 +225,7 @@ module.exports = ({
     // "editor.inactiveSelectionBackground": alpha("#677696", "30"),
     // "editor.inlineValuesBackground": alphaB("#ffc800", 0.2),
     // "editor.inlineValuesForeground": alphaB(brightForeground, 0.5),
-    "editor.lineHighlightBackground": alphaB(bg.black, 0.5),
+    "editor.lineHighlightBackground": alphaB(bg.black, 0.25),
     "editor.lineHighlightBorder": none,
     // "editor.linkedEditingBackground": alpha("#ff0000", "4d"),
     // "editor.rangeHighlightBackground": alpha(bg.blue, "30"),
@@ -513,7 +513,7 @@ module.exports = ({
     // "gitlens.unpublishedCommitIconColor": "#35b15e",
     // "gitlens.unpulledChangesIconColor": "#b15e35",
 
-    // "icon.foreground": "#c5c5c5",
+    // "icon.foreground": foreground,
 
     // "inlineChat.background": background,
     // "inlineChat.border": "#454545",
@@ -567,7 +567,7 @@ module.exports = ({
     // TODO: sidebar / explorer lists:
     "list.activeSelectionBackground": bg.black,
     "list.activeSelectionForeground": brightForeground,
-    "list.activeSelectionIconForeground": none,
+    "list.activeSelectionIconForeground": brightForeground,
     // "list.deemphasizedForeground": "#8c8c8c",
     // "list.dropBackground": "#062f4a",
     "list.errorForeground": error,
@@ -585,7 +585,7 @@ module.exports = ({
     "list.inactiveFocusOutline": none,
     "list.inactiveSelectionBackground": alphaB(bg.black, 0.6),
     "list.inactiveSelectionForeground": foreground,
-    "list.inactiveSelectionIconForeground": none,
+    "list.inactiveSelectionIconForeground": foreground,
     "list.invalidItemForeground": error,
     "list.warningForeground": warning,
 
