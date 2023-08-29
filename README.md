@@ -12,4 +12,6 @@ A VS Code theme based on the [SeaShells terminal color scheme](https://iterm2col
 
 ![VS Code screenshot for SeaShells (Light)](./src/assets/screenshot-light.png)
 
+<!-- ![bob-the-fish terminal screenshot](./icon.png) -->
+
 <!-- ![iTerm2 color-schemes SeaShells palette](./src/assets/iterm2colorschemes-seashells.png) -->
