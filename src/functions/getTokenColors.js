@@ -9,6 +9,7 @@ TODO:
 const { makeAlphaB } = require("./utils");
 
 module.exports = ({
+  bg,
   ansi,
   background,
   foreground,
@@ -132,7 +133,7 @@ module.exports = ({
     { scope: "entity.name.tag", settings: { foreground: ansi.cyan } },
     {
       scope: "meta.tag entity.other.attribute-name",
-      settings: { foreground: ansi.green },
+      settings: { foreground: ansi.green, fontStyle: "italic" },
     },
     {
       scope: "entity.other.attribute-name",
@@ -149,7 +150,7 @@ module.exports = ({
     },
     {
       scope: "markup.italic",
-      settings: { foreground: ansi.brightBlack, fontStyle: "italic" },
+      settings: { foreground: bg.brightBlack, fontStyle: "italic" },
     },
     {
       scope: "markup.bold",
@@ -186,9 +187,9 @@ module.exports = ({
         "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.section.embedded",
       settings: { foreground: alphaB(ansi.cyan, 0.4) },
     },
-    { scope: "token.info-token", settings: { foreground: ansi.blue } },
+    { scope: "token.info-token", settings: { foreground: bg.blue } },
     { scope: "token.warn-token", settings: { foreground: ansi.yellow } },
-    { scope: "token.error-token", settings: { foreground: ansi.red } },
+    { scope: "token.error-token", settings: { foreground: bg.red } },
     { scope: "token.debug-token", settings: { foreground: ansi.green } },
   ];
 };

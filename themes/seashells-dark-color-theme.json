@@ -156,13 +156,13 @@
     "terminal.selectionForeground": "#fee4ce",
     "textLink.activeForeground": "#87acb4",
     "textLink.foreground": "#50a3b5",
-    "titleBar.activeBackground": "#102431",
+    "titleBar.activeBackground": "#0b2532",
     "titleBar.activeForeground": "#628d98",
     "titleBar.border": "#00000000",
     "toolbar.activeBackground": "#5b2f23",
     "toolbar.hoverBackground": "#332423",
     "toolbar.hoverOutline": "#00000000",
-    "welcomePage.background": "#0e1d28",
+    "welcomePage.background": "#0d1d28",
     "welcomePage.progress.background": "#17384c",
     "welcomePage.progress.foreground": "#50a3b5",
     "welcomePage.tileBackground": "#122938",
@@ -399,7 +399,8 @@
     {
       "scope": "meta.tag entity.other.attribute-name",
       "settings": {
-        "foreground": "#027c9b"
+        "foreground": "#027c9b",
+        "fontStyle": "italic"
       }
     },
     {
