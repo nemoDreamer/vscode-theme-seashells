@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.2...v0.6.0) (2023-08-29)
+
+### Features
+
+- **light:** add initial luminance-inverted theme ([33df55c](https://github.com/nemoDreamer/vscode-theme-seashells/commit/33df55c174c28b4dba45ca35ccdf36e23bb25825))
+- **light:** second pass on Light theme ([96fa33f](https://github.com/nemoDreamer/vscode-theme-seashells/commit/96fa33f945088bee251665c2160d6c14ff55b926))
+
 ## [0.5.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.1...v0.5.2) (2023-08-28)
 
 ### Bug Fixes
