@@ -1,3 +1,9 @@
+## [0.6.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.1...v0.6.2) (2023-08-29)
+
+### Bug Fixes
+
+- fixed icon color in active list items ([5676d08](https://github.com/nemoDreamer/vscode-theme-seashells/commit/5676d083e0d0a501cecf6afbc25de2ec1a943478))
+
 ## [0.6.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.0...v0.6.1) (2023-08-29)
 
 # [0.6.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.5.2...v0.6.0) (2023-08-29)
