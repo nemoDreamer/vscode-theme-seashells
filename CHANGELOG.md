@@ -1,3 +1,9 @@
+## [0.6.3](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.2...v0.6.3) (2023-08-30)
+
+### Bug Fixes
+
+- **themes:** comment contrast, DIFF backgrounds, Vue directive attributes ([a1ef057](https://github.com/nemoDreamer/vscode-theme-seashells/commit/a1ef057dc353e7f4ea33f0d5f040c0bc973dc017))
+
 ## [0.6.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.1...v0.6.2) (2023-08-29)
 
 ### Bug Fixes
