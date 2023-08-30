@@ -30,11 +30,11 @@
     "charts.yellow": "#fdd39f",
     "diffEditor.border": "#00000000",
     "diffEditor.diagonalFill": "#122938",
-    "diffEditor.insertedLineBackground": "#027c9b33",
-    "diffEditor.insertedTextBackground": "#027c9b80",
+    "diffEditor.insertedLineBackground": "#093747",
+    "diffEditor.insertedTextBackground": "#074b5f",
     "diffEditor.insertedTextBorder": "#00000000",
-    "diffEditor.removedLineBackground": "#d1512333",
-    "diffEditor.removedTextBackground": "#d1512380",
+    "diffEditor.removedLineBackground": "#472a23",
+    "diffEditor.removedTextBackground": "#6f3523",
     "diffEditor.removedTextBorder": "#00000000",
     "disabledForeground": "#756958",
     "editor.background": "#0c1923",
@@ -231,6 +231,12 @@
       }
     },
     {
+      "scope": "source.vue meta.attribute variable",
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
       "scope": "variable.parameter",
       "settings": {
         "fontStyle": "italic"
@@ -328,7 +334,7 @@
     {
       "scope": "comment",
       "settings": {
-        "foreground": "#27505d",
+        "foreground": "#50a3b566",
         "fontStyle": "italic"
       }
     },
@@ -363,7 +369,7 @@
       }
     },
     {
-      "scope": "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json",
+      "scope": "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json, meta.attribute entity.name, meta.attribute punctuation.separator.label",
       "settings": {
         "foreground": "#50a3b5",
         "fontStyle": "italic"
@@ -483,13 +489,13 @@
     {
       "scope": "punctuation.separator.parameter",
       "settings": {
-        "foreground": "#27505d"
+        "foreground": "#50a3b566"
       }
     },
     {
       "scope": "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.section.embedded",
       "settings": {
-        "foreground": "#27505d"
+        "foreground": "#50a3b566"
       }
     },
     {

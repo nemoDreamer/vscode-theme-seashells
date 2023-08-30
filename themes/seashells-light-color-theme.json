@@ -30,11 +30,11 @@
     "charts.yellow": "#fdd39f",
     "diffEditor.border": "#00000000",
     "diffEditor.diagonalFill": "#c1d8eb",
-    "diffEditor.insertedLineBackground": "#1e86a633",
-    "diffEditor.insertedTextBackground": "#1e86a680",
+    "diffEditor.insertedLineBackground": "#a2ccdf",
+    "diffEditor.insertedTextBackground": "#7db8cf",
     "diffEditor.insertedTextBorder": "#00000000",
-    "diffEditor.removedLineBackground": "#c94a1c33",
-    "diffEditor.removedTextBackground": "#c94a1c80",
+    "diffEditor.removedLineBackground": "#d6bab6",
+    "diffEditor.removedTextBackground": "#d29a8a",
     "diffEditor.removedTextBorder": "#00000000",
     "disabledForeground": "#938e82",
     "editor.background": "#dbeaf8",
@@ -231,6 +231,12 @@
       }
     },
     {
+      "scope": "source.vue meta.attribute variable",
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
       "scope": "variable.parameter",
       "settings": {
         "fontStyle": "italic"
@@ -328,7 +334,7 @@
     {
       "scope": "comment",
       "settings": {
-        "foreground": "#a3cedd",
+        "foreground": "#00627266",
         "fontStyle": "italic"
       }
     },
@@ -363,7 +369,7 @@
       }
     },
     {
-      "scope": "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json",
+      "scope": "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json, meta.attribute entity.name, meta.attribute punctuation.separator.label",
       "settings": {
         "foreground": "#50a3b5",
         "fontStyle": "italic"
@@ -483,13 +489,13 @@
     {
       "scope": "punctuation.separator.parameter",
       "settings": {
-        "foreground": "#a3cedd"
+        "foreground": "#00627266"
       }
     },
     {
       "scope": "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.section.embedded",
       "settings": {
-        "foreground": "#a3cedd"
+        "foreground": "#00627266"
       }
     },
     {

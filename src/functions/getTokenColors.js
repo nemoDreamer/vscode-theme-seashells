@@ -6,17 +6,22 @@ TODO:
 - [x] use `brightForeground` for `ansi.brightWhite`
 */
 
-const { makeAlphaB } = require("./utils");
+const {
+  // makeAlphaB,
+  alpha,
+} = require("./utils");
 
 module.exports = ({
   bg,
   ansi,
-  background,
+  // background,
   foreground,
   brightForeground,
   // background,
+  // ---
+  // eslint-disable-next-line arrow-body-style
 }) => {
-  const alphaB = makeAlphaB(background);
+  // const alphaB = makeAlphaB(background);
 
   return [
     { scope: "string", settings: { foreground } },
@@ -42,6 +47,10 @@ module.exports = ({
     {
       scope: "variable, meta.definition.variable entity.name.function",
       settings: { foreground },
+    },
+    {
+      scope: "source.vue meta.attribute variable",
+      settings: { fontStyle: "bold" },
     },
     { scope: "variable.parameter", settings: { fontStyle: "italic" } },
     {
@@ -96,7 +105,7 @@ module.exports = ({
     },
     {
       scope: "comment",
-      settings: { foreground: alphaB(ansi.cyan, 0.4), fontStyle: "italic" },
+      settings: { foreground: alpha(bg.cyan, 0.4), fontStyle: "italic" },
     },
     { scope: "entity.name.type.class", settings: { foreground: ansi.magenta } },
     {
@@ -114,7 +123,7 @@ module.exports = ({
     { scope: "entity.name.tag.yaml", settings: { foreground: ansi.magenta } },
     {
       scope:
-        "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json",
+        "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json, meta.attribute entity.name, meta.attribute punctuation.separator.label",
       settings: { foreground: ansi.cyan, fontStyle: "italic" },
     },
     {
@@ -180,12 +189,12 @@ module.exports = ({
     },
     {
       scope: "punctuation.separator.parameter",
-      settings: { foreground: alphaB(ansi.cyan, 0.4) },
+      settings: { foreground: alpha(bg.cyan, 0.4) },
     },
     {
       scope:
         "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.section.embedded",
-      settings: { foreground: alphaB(ansi.cyan, 0.4) },
+      settings: { foreground: alpha(bg.cyan, 0.4) },
     },
     { scope: "token.info-token", settings: { foreground: bg.blue } },
     { scope: "token.warn-token", settings: { foreground: ansi.yellow } },
