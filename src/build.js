@@ -36,6 +36,7 @@ const relative = (to) => `./${path.relative(ROOT, to)}`;
 // ---
 
 (() => {
+  // Schemes
   schemes.forEach((scheme) => {
     log.info("Processing theme id:", scheme.id);
 
@@ -49,6 +50,15 @@ const relative = (to) => `./${path.relative(ROOT, to)}`;
 
     log.verbose("Wrote file", relative(filepath));
   });
+
+  // Icon
+  const iconFilename = "icon.png";
+  const iconSrc = path.resolve(ROOT, `src/assets/icon-assets/${iconFilename}`);
+  const iconDest = path.resolve(ROOT, iconFilename);
+
+  fs.copyFileSync(iconSrc, iconDest);
+
+  log.info("Copied file", relative(iconDest));
 
   log.info("👍 Done!");
 })();
