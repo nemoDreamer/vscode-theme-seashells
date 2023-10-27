@@ -1,3 +1,9 @@
+## [0.6.6](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.5...v0.6.6) (2023-10-27)
+
+### Bug Fixes
+
+- **themes:** selection in DIFFs ([1c534ad](https://github.com/nemoDreamer/vscode-theme-seashells/commit/1c534ad0850c104af698af3127cd71a7749f71ce))
+
 ## [0.6.5](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.4...v0.6.5) (2023-08-31)
 
 ## [0.6.4](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.3...v0.6.4) (2023-08-30)
