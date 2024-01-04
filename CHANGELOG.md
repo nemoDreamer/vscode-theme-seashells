@@ -1,3 +1,9 @@
+# [0.7.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.6...v0.7.0) (2024-01-04)
+
+### Features
+
+- **themes:** added suble borders ([e306147](https://github.com/nemoDreamer/vscode-theme-seashells/commit/e306147b3f1f0d346751e1dc671920a65dd95333))
+
 ## [0.6.6](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.5...v0.6.6) (2023-10-27)
 
 ### Bug Fixes
