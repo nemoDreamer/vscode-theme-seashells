@@ -6,6 +6,7 @@ A VS Code theme based on the [SeaShells terminal color scheme](https://iterm2col
 
 ## Roadmap
 
+- [x] Minimal borders
 - [ ] Increase legibility of Status Bar
 - [ ] Initial pass on search filter/highlight colors
 - [ ] Initial pass on links colors
