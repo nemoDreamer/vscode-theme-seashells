@@ -1,2 +1,5 @@
 #!/bin/bash
-exec </dev/tty && npx cz --hook || true
+if [ -t 0 ]; then
+  # Only run if stdin is a terminal (interactive)
+  exec < /dev/tty && ./node_modules/.bin/cz --hook || true
+fi
