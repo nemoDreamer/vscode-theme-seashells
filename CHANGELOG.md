@@ -1,3 +1,5 @@
+## [0.8.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.8.0...v0.8.1) (2026-05-28)
+
 # [0.8.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.7.0...v0.8.0) (2026-05-28)
 
 ### Bug Fixes
