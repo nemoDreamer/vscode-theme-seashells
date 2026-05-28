@@ -2,6 +2,7 @@
   "name": "SeaShells (Dark)",
   "type": "dark",
   "$schema": "vscode://schemas/color-theme",
+  "semanticHighlighting": true,
   "colors": {
     "activityBar.activeBackground": "#074b5f",
     "activityBar.background": "#0c1923",
@@ -533,5 +534,50 @@
       }
     }
   ],
-  "semanticHighlighting": true
+  "semanticTokenColors": {
+    "class": {
+      "foreground": "#68d4f1"
+    },
+    "comment": {
+      "foreground": "#50a3b566",
+      "italic": true
+    },
+    "enumMember": {
+      "foreground": "#fee4ce"
+    },
+    "function": {
+      "foreground": "#50a3b5"
+    },
+    "keyword": {
+      "foreground": "#fca02f"
+    },
+    "method": {
+      "foreground": "#50a3b5"
+    },
+    "namespace": {
+      "foreground": "#fee4ce"
+    },
+    "number": {
+      "foreground": "#50a3b5"
+    },
+    "operator": {
+      "foreground": "#fca02f"
+    },
+    "parameter": {
+      "foreground": "#deb88d",
+      "italic": true
+    },
+    "property": {
+      "foreground": "#68d4f1"
+    },
+    "string": {
+      "foreground": "#deb88d"
+    },
+    "type": {
+      "foreground": "#68d4f1"
+    },
+    "variable": {
+      "foreground": "#deb88d"
+    }
+  }
 }

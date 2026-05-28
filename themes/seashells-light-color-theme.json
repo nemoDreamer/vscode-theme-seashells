@@ -2,6 +2,7 @@
   "name": "SeaShells (Light)",
   "type": "light",
   "$schema": "vscode://schemas/color-theme",
+  "semanticHighlighting": true,
   "colors": {
     "activityBar.activeBackground": "#7db8cf",
     "activityBar.background": "#dbeaf8",
@@ -533,5 +534,50 @@
       }
     }
   ],
-  "semanticHighlighting": true
+  "semanticTokenColors": {
+    "class": {
+      "foreground": "#027c9b"
+    },
+    "comment": {
+      "foreground": "#00627266",
+      "italic": true
+    },
+    "enumMember": {
+      "foreground": "#250200"
+    },
+    "function": {
+      "foreground": "#50a3b5"
+    },
+    "keyword": {
+      "foreground": "#fca02f"
+    },
+    "method": {
+      "foreground": "#50a3b5"
+    },
+    "namespace": {
+      "foreground": "#250200"
+    },
+    "number": {
+      "foreground": "#50a3b5"
+    },
+    "operator": {
+      "foreground": "#fca02f"
+    },
+    "parameter": {
+      "foreground": "#593e19",
+      "italic": true
+    },
+    "property": {
+      "foreground": "#68d4f1"
+    },
+    "string": {
+      "foreground": "#593e19"
+    },
+    "type": {
+      "foreground": "#027c9b"
+    },
+    "variable": {
+      "foreground": "#593e19"
+    }
+  }
 }

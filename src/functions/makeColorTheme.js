@@ -1,5 +1,6 @@
 const getUIColors = require("./getUIColors");
 const getTokenColors = require("./getTokenColors");
+const getSemanticTokenColors = require("./getSemanticTokenColors");
 
 /**
  *
@@ -10,8 +11,9 @@ module.exports = ({ name, type, scheme }) => ({
   name,
   type,
   $schema: "vscode://schemas/color-theme",
+  semanticHighlighting: true,
   // ---
   colors: getUIColors(type, scheme),
   tokenColors: getTokenColors(type, scheme),
-  semanticHighlighting: true,
+  semanticTokenColors: getSemanticTokenColors(type, scheme),
 });
