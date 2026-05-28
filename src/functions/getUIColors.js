@@ -26,20 +26,23 @@ TODO:
   - [x] buttons
 */
 
-module.exports = ({
-  ansi,
-  bg,
-  foreground,
-  darkForeground,
-  brightForeground,
-  background,
-  // darkBackground,
-  // bold,
-  // links,
-  cursorText,
-  selection: selectionBackground,
-  selectedText: selectionForeground,
-}) => {
+module.exports = (
+  type,
+  {
+    ansi,
+    bg,
+    foreground,
+    darkForeground,
+    brightForeground,
+    background,
+    // darkBackground,
+    // bold,
+    // links,
+    cursorText,
+    selection: selectionBackground,
+    selectedText: selectionForeground,
+  },
+) => {
   const alphaB = makeAlphaB(background);
 
   const none = "#00000000";

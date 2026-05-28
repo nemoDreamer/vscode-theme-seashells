@@ -223,7 +223,7 @@
       }
     },
     {
-      "scope": "support.variable, support.constant",
+      "scope": "support.variable",
       "settings": {
         "foreground": "#deb88d"
       }
@@ -256,6 +256,12 @@
       "scope": "support.variable.property, variable.other.property",
       "settings": {
         "foreground": "#68d4f1"
+      }
+    },
+    {
+      "scope": "variable.other.constant",
+      "settings": {
+        "foreground": "#fee4ce"
       }
     },
     {
@@ -526,5 +532,6 @@
         "foreground": "#027c9b"
       }
     }
-  ]
+  ],
+  "semanticHighlighting": true
 }

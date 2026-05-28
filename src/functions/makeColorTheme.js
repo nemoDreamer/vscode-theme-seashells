@@ -11,6 +11,7 @@ module.exports = ({ name, type, scheme }) => ({
   type,
   $schema: "vscode://schemas/color-theme",
   // ---
-  colors: getUIColors(scheme),
-  tokenColors: getTokenColors(scheme),
+  colors: getUIColors(type, scheme),
+  tokenColors: getTokenColors(type, scheme),
+  semanticHighlighting: true,
 });

@@ -1,4 +1,9 @@
-const { processColors, invertLuminance } = require("../functions/utils");
+const {
+  processColors,
+  invertLuminance,
+  lighten,
+  darken,
+} = require("../functions/utils");
 
 const dark = require("./seashells-dark");
 
@@ -18,7 +23,7 @@ module.exports = {
     // - change ansi.black to more saturated
 
     // nudge foreground colors:
-    // foreground: chroma(processed.foreground).set("lch.l", "*1.5").hex(),
-    // brightForeground: chroma(processed.foreground).set("lch.l", "*2.5").hex(),
+    foreground: lighten(processed.foreground, 1.25),
+    brightForeground: darken(processed.foreground, 0.125),
   },
 };

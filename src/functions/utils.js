@@ -46,15 +46,15 @@ const invertLuminance = (hexColor) => {
   return chroma.lch([100 - l, c, h]).hex();
 };
 
-const lighten = (hexColor) =>
+const lighten = (hexColor, factor = 1.1563045694783756) =>
   chroma(hexColor)
-    .set("lab.l", "*1.1563045694783756")
+    .set("lab.l", `*${factor}`)
     // .saturate(1) // <- nudge
     .hex();
 
-const darken = (hexColor) =>
+const darken = (hexColor, factor = 0.5833759597037464) =>
   chroma(hexColor)
-    .set("lab.l", "*0.5833759597037464")
+    .set("lab.l", `*${factor}`)
     // .desaturate(1) // <- nudge
     .hex();
 
@@ -105,7 +105,7 @@ const processColors = (scheme, callback) => {
       ...prev,
       [key]: processColors(value, callback),
     }),
-    {}
+    {},
   );
 };
 

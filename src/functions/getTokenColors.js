@@ -11,16 +11,21 @@ const {
   alpha,
 } = require("./utils");
 
-module.exports = ({
-  bg,
-  ansi,
-  // background,
-  foreground,
-  brightForeground,
-  // background,
-  // ---
+module.exports = (
+  type,
+  {
+    bg,
+    ansi,
+    // background,
+    foreground,
+    brightForeground,
+    // background,
+    // ---
+  },
   // eslint-disable-next-line arrow-body-style
-}) => {
+) => {
+  // const isDark = type === "dark";
+
   // const alphaB = makeAlphaB(background);
 
   return [
@@ -43,7 +48,7 @@ module.exports = ({
       settings: { foreground: ansi.green },
     },
     { scope: "support.class", settings: { foreground: ansi.cyan } },
-    { scope: "support.variable, support.constant", settings: { foreground } },
+    { scope: "support.variable", settings: { foreground } },
     {
       scope: "variable, meta.definition.variable entity.name.function",
       settings: { foreground },
@@ -62,6 +67,20 @@ module.exports = ({
       scope: "support.variable.property, variable.other.property",
       settings: { foreground: ansi.magenta },
     },
+    {
+      scope: "variable.other.constant",
+      settings: {
+        foreground: brightForeground,
+        // fontStyle: !isDark ? "bold" : undefined,
+      },
+    },
+    // {
+    //   scope: "entity.name.type.module",
+    //   settings: {
+    //     foreground: brightForeground,
+    //     fontStyle: "bold",
+    //   },
+    // },
     { scope: "variable.language.this", settings: { fontStyle: "italic" } },
     {
       scope: "modifier, support.type.object",
