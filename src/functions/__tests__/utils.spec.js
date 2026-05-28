@@ -24,7 +24,7 @@ describe("utils", () => {
           blue: "#0000cc",
           brightBlue: "brightblue",
         },
-      })
+      }),
     ).toMatchInlineSnapshot(`
       {
         "ansi": {
@@ -110,6 +110,14 @@ describe("utils", () => {
             "brightWhite": "#001a2a",
             "brightYellow": "#00274d",
             "cyan": "#7d4b3d",
+            "darkBlack": "#eed7bd",
+            "darkBlue": "#ecc8c0",
+            "darkCyan": "#c08c7c",
+            "darkGreen": "#caa684",
+            "darkMagenta": "#a87059",
+            "darkRed": "#00c5f8",
+            "darkWhite": "#4f8ab1",
+            "darkYellow": "#009ae3",
             "green": "#a47052",
             "magenta": "#55210e",
             "red": "#008bc9",
