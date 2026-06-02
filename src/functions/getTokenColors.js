@@ -29,7 +29,7 @@ module.exports = (
   // const alphaB = makeAlphaB(background);
 
   return [
-    { scope: "string", settings: { foreground } },
+    // TEMPLATES
     {
       scope: "string.template",
       settings: { foreground: ansi.green },
@@ -39,59 +39,27 @@ module.exports = (
       settings: { foreground: ansi.cyan },
     },
     {
+      scope: "template.expression.begin, template.expression.end",
+      settings: { foreground: ansi.green },
+    },
+
+    // READ-ONLY
+    {
       scope: "constant.language",
       settings: { foreground: ansi.yellow, fontStyle: "italic" },
     },
     { scope: "constant.numeric", settings: { foreground: ansi.cyan } },
-    {
-      scope: "constant.language.json, constant.language.import-export-all",
-      settings: { foreground: ansi.green },
-    },
-    { scope: "support.class", settings: { foreground: ansi.cyan } },
+
+    // READ-WRITE
     { scope: "support.variable", settings: { foreground } },
-    {
-      scope: "variable, meta.definition.variable entity.name.function",
-      settings: { foreground },
-    },
-    {
-      scope: "source.vue meta.attribute variable",
-      settings: { fontStyle: "bold" },
-    },
-    { scope: "variable.parameter", settings: { fontStyle: "italic" } },
     {
       scope:
         "variable.object.property, meta.field.declaration string, variable.other.object.property",
       settings: { foreground: ansi.green },
     },
-    {
-      scope: "support.variable.property, variable.other.property",
-      settings: { foreground: ansi.magenta },
-    },
-    {
-      scope: "variable.other.constant",
-      settings: {
-        foreground: brightForeground,
-        // fontStyle: !isDark ? "bold" : undefined,
-      },
-    },
-    // {
-    //   scope: "entity.name.type.module",
-    //   settings: {
-    //     foreground: brightForeground,
-    //     fontStyle: "bold",
-    //   },
-    // },
-    { scope: "variable.language.this", settings: { fontStyle: "italic" } },
-    {
-      scope: "modifier, support.type.object",
-      settings: { foreground: ansi.green },
-    },
+
+    // // KEYWORDS
     { scope: "keyword", settings: { foreground: ansi.yellow } },
-    {
-      scope:
-        "keyword.control.loop, keyword.control.conditional, keyword.control.trycatch",
-      settings: { foreground: ansi.yellow },
-    },
     {
       scope:
         "keyword.control.import, keyword.control.from, keyword.control.export, keyword.control.default",
@@ -101,13 +69,10 @@ module.exports = (
       scope: "keyword.control.flow",
       settings: { foreground: ansi.magenta, fontStyle: "italic" },
     },
+    { scope: "variable.language.this", settings: { fontStyle: "italic" } },
     {
-      scope: "entity.name.function, support.function",
-      settings: { foreground: ansi.cyan },
-    },
-    {
-      scope: "new.expr entity.name.function",
-      settings: { foreground: brightForeground, fontStyle: "bold" },
+      scope: "modifier, support.type.object",
+      settings: { foreground: ansi.green },
     },
     {
       scope: "storage.type, storage.modifier",
@@ -117,7 +82,6 @@ module.exports = (
       scope: "support.module, support.node",
       settings: { foreground, fontStyle: "italic" },
     },
-    { scope: "support.type", settings: { foreground: ansi.magenta } },
     {
       scope: "entity.name.type, entity.other.inherited-class",
       settings: { foreground: brightForeground /* ansi.magenta */ },
@@ -126,25 +90,15 @@ module.exports = (
       scope: "comment",
       settings: { foreground: alpha(bg.cyan, 0.4), fontStyle: "italic" },
     },
-    { scope: "entity.name.type.class", settings: { foreground: ansi.magenta } },
-    {
-      scope: "meta.definition.method entity.name.function",
-      settings: { foreground: ansi.cyan },
-    },
-    {
-      scope: "meta.function entity.name.function",
-      settings: { foreground: ansi.cyan },
-    },
-    {
-      scope: "template.expression.begin, template.expression.end",
-      settings: { foreground: ansi.green },
-    },
-    { scope: "entity.name.tag.yaml", settings: { foreground: ansi.magenta } },
+
+    // OBJECTS
     {
       scope:
         "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json, meta.attribute entity.name, meta.attribute punctuation.separator.label",
       settings: { foreground: ansi.cyan, fontStyle: "italic" },
     },
+
+    // HTML
     {
       scope: "entity.other.attribute-name.class",
       settings: { foreground: ansi.green },
@@ -153,7 +107,6 @@ module.exports = (
       scope: "entity.other.attribute-name.id",
       settings: { foreground: ansi.cyan },
     },
-    { scope: "source.css", settings: { foreground: ansi.yellow } },
     {
       scope: "meta.tag, punctuation.definition.tag",
       settings: { foreground: ansi.green },
@@ -167,6 +120,11 @@ module.exports = (
       scope: "entity.other.attribute-name",
       settings: { foreground: ansi.yellow },
     },
+
+    // CSS
+    { scope: "source.css", settings: { foreground: ansi.yellow } },
+
+    // MARKDOWN
     { scope: "markup.heading", settings: { foreground: ansi.green } },
     {
       scope: "text.html.markdown meta.link.inline, meta.link.reference",
@@ -188,6 +146,8 @@ module.exports = (
       scope: "markup.bold markup.italic, markup.italic markup.bold",
       settings: { foreground: brightForeground },
     },
+
+    // INI
     { scope: "keyword.other.definition.ini", settings: { foreground } },
     {
       scope: "entity.name.section.group-title.ini",
@@ -197,24 +157,37 @@ module.exports = (
       scope: "punctuation.definition.tag",
       settings: { foreground: ansi.cyan },
     },
+
+    // YAML
+    { scope: "entity.name.tag.yaml", settings: { foreground: ansi.magenta } },
+
+    // TYPESCRIPT
     {
       scope:
         "storage.modifier.ts, entity.name.type.module.ts, support.type.primitive.ts",
       settings: { foreground: ansi.cyan },
     },
+
+    // VUE
+    {
+      scope: "source.vue meta.attribute variable",
+      settings: { fontStyle: "bold" },
+    },
+
+    // JSDOC
     {
       scope: "entity.name.type.instance.jsdoc",
       settings: { foreground: ansi.cyan },
     },
-    {
-      scope: "punctuation.separator.parameter",
-      settings: { foreground: alpha(bg.cyan, 0.4) },
-    },
+
+    // PUNCTUATION / BRACES
     {
       scope:
-        "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.section.embedded",
+        "meta.brace, punctuation.definition.parameters, punctuation.definition.block, punctuation.terminator.statement, punctuation.separator.comma, punctuation.separator.parameter, punctuation.section.embedded",
       settings: { foreground: alpha(bg.cyan, 0.4) },
     },
+
+    // STATUSES
     { scope: "token.info-token", settings: { foreground: bg.blue } },
     { scope: "token.warn-token", settings: { foreground: ansi.yellow } },
     { scope: "token.error-token", settings: { foreground: bg.red } },

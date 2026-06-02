@@ -23,7 +23,7 @@ module.exports = {
     // - change ansi.black to more saturated
 
     // nudge foreground colors:
-    foreground: lighten(processed.foreground, 1.25),
-    brightForeground: darken(processed.foreground, 0.125),
+    foreground: lighten(processed.foreground, 1.5),
+    brightForeground: darken(processed.foreground, 0.25),
   },
 };

@@ -1,53 +1,30 @@
-const { alpha } = require("./utils");
-
-module.exports = (type, { bg, ansi, foreground, brightForeground }) => {
+module.exports = (type, { ansi, foreground, brightForeground }) => {
   const isDark = type === "dark";
   const symbolAccent = isDark ? ansi.magenta : ansi.green;
 
   return {
-    class: {
-      foreground: symbolAccent,
-    },
-    comment: {
-      foreground: alpha(bg.cyan, 0.4),
-      italic: true,
-    },
-    enumMember: {
-      foreground: brightForeground,
-    },
-    function: {
-      foreground: ansi.cyan,
-    },
-    keyword: {
-      foreground: ansi.yellow,
-    },
-    method: {
-      foreground: ansi.cyan,
-    },
-    namespace: {
-      foreground: brightForeground,
-    },
-    number: {
-      foreground: ansi.cyan,
-    },
-    operator: {
-      foreground: ansi.yellow,
-    },
+    class: symbolAccent,
+    enumMember: brightForeground,
+    function: ansi.cyan,
+    method: ansi.cyan,
+    namespace: brightForeground,
+    number: ansi.cyan,
+    operator: ansi.yellow,
     parameter: {
       foreground,
       italic: true,
     },
-    property: {
-      foreground: ansi.magenta,
-    },
-    string: {
-      foreground,
-    },
-    type: {
-      foreground: symbolAccent,
-    },
-    variable: {
-      foreground,
-    },
+    property: symbolAccent,
+    string: foreground,
+    type: symbolAccent,
+    variable: foreground,
+
+    // modifiers:
+    "*.readonly": brightForeground,
+    // - specific
+    "property.declaration": ansi.green,
+    "class.defaultLibrary": symbolAccent,
+    "variable.defaultLibrary": symbolAccent,
+    "type.defaultLibrary": symbolAccent,
   };
 };
