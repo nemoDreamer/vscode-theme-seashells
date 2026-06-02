@@ -327,9 +327,27 @@
       }
     },
     {
-      "scope": "source.css",
+      "scope": "source.css support.type",
       "settings": {
-        "foreground": "#fca02f"
+        "foreground": "#027c9b"
+      }
+    },
+    {
+      "scope": "source.css entity.name.tag",
+      "settings": {
+        "foreground": "#bbe3ee"
+      }
+    },
+    {
+      "scope": "source.css entity.other.attribute-name.class",
+      "settings": {
+        "foreground": "#50a3b5"
+      }
+    },
+    {
+      "scope": "source.css entity.other.attribute-name.id",
+      "settings": {
+        "foreground": "#fee4ce"
       }
     },
     {

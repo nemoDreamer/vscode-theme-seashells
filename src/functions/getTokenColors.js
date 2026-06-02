@@ -95,7 +95,12 @@ module.exports = (
     {
       scope:
         "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json, meta.attribute entity.name, meta.attribute punctuation.separator.label",
-      settings: { foreground: ansi.cyan, fontStyle: "italic" },
+      settings: {
+        // NOTE: the color of the actual label is dictated by semantic
+        // `property.declaration`
+        foreground: ansi.cyan,
+        fontStyle: "italic",
+      },
     },
 
     // HTML
@@ -122,7 +127,22 @@ module.exports = (
     },
 
     // CSS
-    { scope: "source.css", settings: { foreground: ansi.yellow } },
+    {
+      scope: "source.css support.type",
+      settings: { foreground: ansi.green },
+    },
+    {
+      scope: "source.css entity.name.tag",
+      settings: { foreground: ansi.brightMagenta },
+    },
+    {
+      scope: "source.css entity.other.attribute-name.class",
+      settings: { foreground: ansi.cyan },
+    },
+    {
+      scope: "source.css entity.other.attribute-name.id",
+      settings: { foreground: ansi.brightWhite },
+    },
 
     // MARKDOWN
     { scope: "markup.heading", settings: { foreground: ansi.green } },
