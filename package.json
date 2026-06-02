@@ -1,7 +1,7 @@
 {
   "name": "vscode-theme-seashells",
   "displayName": "SeaShells Theme",
-  "version": "0.7.0",
+  "version": "0.8.1",
   "description": "A VS Code theme based on the SeaShells terminal color scheme.",
   "categories": [
     "Themes"
@@ -47,6 +47,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@vscode/vsce": "^3.9.1",
     "conventional-recommended-bump": "^7.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.47.0",

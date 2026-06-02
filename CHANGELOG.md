@@ -1,3 +1,15 @@
+## [0.8.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.8.0...v0.8.1) (2026-05-28)
+
+# [0.8.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.7.0...v0.8.0) (2026-05-28)
+
+### Bug Fixes
+
+- **test:** update fixtures ([bf01f4a](https://github.com/nemoDreamer/vscode-theme-seashells/commit/bf01f4af3d55d20a5e929d089fabe28a61d405c6))
+
+### Features
+
+- **themes:** stronger constants ([76b5965](https://github.com/nemoDreamer/vscode-theme-seashells/commit/76b59656d408a68b1460d63d3ab1e9b96e1da55d))
+
 # [0.7.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.6.6...v0.7.0) (2024-01-04)
 
 ### Features
