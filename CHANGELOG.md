@@ -1,3 +1,9 @@
+## [0.9.1](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.9.0...v0.9.1) (2026-06-02)
+
+### Bug Fixes
+
+- **themes:** fix broken CSS styles ([720c183](https://github.com/nemoDreamer/vscode-theme-seashells/commit/720c183683c96fba6c2f3ba65cbc89dc3fe61507))
+
 # [0.9.0](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.8.1...v0.9.0) (2026-06-02)
 
 ### Features
