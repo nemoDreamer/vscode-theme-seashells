@@ -314,6 +314,12 @@
       }
     },
     {
+      "scope": "text.html meta.tag",
+      "settings": {
+        "foreground": "#628d98"
+      }
+    },
+    {
       "scope": "meta.tag entity.other.attribute-name",
       "settings": {
         "foreground": "#027c9b",

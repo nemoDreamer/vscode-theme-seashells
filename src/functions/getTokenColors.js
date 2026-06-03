@@ -118,6 +118,10 @@ module.exports = (
     },
     { scope: "entity.name.tag", settings: { foreground: ansi.cyan } },
     {
+      scope: "text.html meta.tag",
+      settings: { foreground: ansi.brightGreen },
+    },
+    {
       scope: "meta.tag entity.other.attribute-name",
       settings: { foreground: ansi.green, fontStyle: "italic" },
     },
