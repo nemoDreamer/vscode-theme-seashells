@@ -1,5 +1,6 @@
 .*
 .*/**
+jest.config.js
 vsc-extension-quickstart.md
 node_modules/
 src/
