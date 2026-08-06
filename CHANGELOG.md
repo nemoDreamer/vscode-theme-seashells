@@ -1,3 +1,9 @@
+## [0.9.3](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.9.2...v0.9.3) (2026-08-06)
+
+### Bug Fixes
+
+- **themes:** restore TextMate fallbacks for semantic token colors ([8c17dcf](https://github.com/nemoDreamer/vscode-theme-seashells/commit/8c17dcf65a62ff7e06c44416aea3821d2c30772b))
+
 ## [0.9.2](https://github.com/nemoDreamer/vscode-theme-seashells/compare/v0.9.1...v0.9.2) (2026-06-03)
 
 ### Bug Fixes
