@@ -24,7 +24,8 @@ module.exports = (
   },
   // eslint-disable-next-line arrow-body-style
 ) => {
-  // const isDark = type === "dark";
+  const isDark = type === "dark";
+  const symbolAccent = isDark ? ansi.magenta : ansi.green;
 
   // const alphaB = makeAlphaB(background);
 
@@ -49,13 +50,40 @@ module.exports = (
       settings: { foreground: ansi.yellow, fontStyle: "italic" },
     },
     { scope: "constant.numeric", settings: { foreground: ansi.cyan } },
+    {
+      scope: "constant.language.json, constant.language.import-export-all",
+      settings: { foreground: ansi.green },
+    },
+    {
+      // NOTE: fallback for semantic `*.readonly` — TextMate grammars only
+      // catch this via naming convention (e.g. SCREAMING_CASE), but VS
+      // Code's diff view doesn't run semantic highlighting, so this keeps
+      // const/readonly bindings visually distinct there too
+      scope: "variable.other.constant",
+      settings: { foreground: brightForeground },
+    },
 
     // READ-WRITE
-    { scope: "support.variable", settings: { foreground } },
+    {
+      // NOTE: fallback for semantic `variable.defaultLibrary` (e.g.
+      // `console`, `require`, `module`) — grammar-tagged built-ins only,
+      // arbitrary ambient globals (DOM lib, etc.) still need semantic tokens
+      scope: "support.variable",
+      settings: { foreground: symbolAccent },
+    },
+    {
+      scope: "variable, meta.definition.variable entity.name.function",
+      settings: { foreground },
+    },
+    { scope: "variable.parameter", settings: { fontStyle: "italic" } },
     {
       scope:
         "variable.object.property, meta.field.declaration string, variable.other.object.property",
       settings: { foreground: ansi.green },
+    },
+    {
+      scope: "support.variable.property, variable.other.property",
+      settings: { foreground: symbolAccent },
     },
 
     // // KEYWORDS
@@ -89,6 +117,25 @@ module.exports = (
     {
       scope: "comment",
       settings: { foreground: alpha(bg.cyan, 0.4), fontStyle: "italic" },
+    },
+
+    // FUNCTIONS / METHODS (fallback for semantic function/method)
+    {
+      scope:
+        "entity.name.function, support.function, meta.definition.method entity.name.function, meta.function entity.name.function",
+      settings: { foreground: ansi.cyan },
+    },
+    {
+      scope: "new.expr entity.name.function",
+      settings: { foreground: brightForeground, fontStyle: "bold" },
+    },
+
+    // CLASSES / TYPES (fallback for semantic class/type)
+    { scope: "support.type", settings: { foreground: symbolAccent } },
+    { scope: "support.class", settings: { foreground: symbolAccent } },
+    {
+      scope: "entity.name.type.class",
+      settings: { foreground: symbolAccent },
     },
 
     // OBJECTS
